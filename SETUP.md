@@ -6,7 +6,7 @@ Complete this checklist after installing Neovim with this config:
 
 - [ ] **Install plugins**: Open Neovim (`nvim`) and let Lazy install plugins
   - Lazy will auto-install on first launch
-  - Wait for "Neovim ready!" message
+  - Wait for "NikaVim ready!" message
   - Close Neovim (`:q`)
 
 - [ ] **Verify installation**:

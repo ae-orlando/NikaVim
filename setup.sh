@@ -1,7 +1,7 @@
 #!/bin/bash
-# Post-Installation Setup Script for Neovim Config
+# Post-Installation Setup Script for NikaVim
 
-echo "🚀 Neovim Setup Wizard"
+echo "🚀 NikaVim Setup Wizard"
 echo "====================="
 echo ""
 

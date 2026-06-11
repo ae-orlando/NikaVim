@@ -1,8 +1,8 @@
-% Neovim Configuration - Complete Guide Index
+% NikaVim - Neovim IDE Distribution
 
-# Welcome to Your Improved Neovim Setup! 🚀
+# Welcome to NikaVim! 🚀
 
-Your Neovim configuration has been completely modernized with professional-grade tools, features, and documentation.
+NikaVim is a modern Neovim IDE distribution with professional-grade tools, features, and documentation.
 
 ## 📖 Where to Start?
 
@@ -56,6 +56,8 @@ Your Neovim configuration has been completely modernized with professional-grade
 | **Learn keybindings** | [KEYMAPS.md](./KEYMAPS.md) |
 | **Full documentation** | [README.md](./README.md) |
 | **Customize & optimize** | [ADVANCED.md](./ADVANCED.md) |
+| **Version history** | [CHANGELOG.md](./CHANGELOG.md) |
+| **How to contribute** | [CONTRIBUTING.md](./CONTRIBUTING.md) |
 
 ---
 
@@ -80,7 +82,7 @@ Your Neovim configuration has been completely modernized with professional-grade
    ```bash
    nvim
    ```
-   Wait for "✨ Neovim ready!" message
+   Wait for "✨ NikaVim ready!" message
 
 2. **Read Quick Start**
    Open [QUICKSTART.md](./QUICKSTART.md) in another terminal or after closing Neovim

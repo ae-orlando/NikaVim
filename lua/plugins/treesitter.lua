@@ -5,9 +5,13 @@ return {
   {
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
-    event = "BufReadPost",
+    lazy = false,
     config = function()
-      require("nvim-treesitter.configs").setup({
+      local ok, ts = pcall(require, "nvim-treesitter.config")
+      if not ok then
+        return
+      end
+      ts.setup({
         ensure_installed = {
           "lua",
           "python",
@@ -49,9 +53,13 @@ return {
   {
     "nvim-treesitter/nvim-treesitter-textobjects",
     dependencies = "nvim-treesitter/nvim-treesitter",
-    event = "BufReadPost",
+    lazy = false,
     config = function()
-      require("nvim-treesitter.configs").setup({
+      local ok, ts = pcall(require, "nvim-treesitter.config")
+      if not ok then
+        return
+      end
+      ts.setup({
         textobjects = {
           select = {
             enable = true,
@@ -84,6 +92,6 @@ return {
   {
     "JoosepAlviste/nvim-ts-context-commentstring",
     dependencies = "nvim-treesitter/nvim-treesitter",
-    event = "BufReadPost",
+    lazy = false,
   },
 }

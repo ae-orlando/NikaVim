@@ -28,6 +28,5 @@ require("lazy").setup("plugins", {
 
 -- Print startup info
 vim.schedule(function()
-  print("✨ Neovim ready!")
+  print("✨ NikaVim ready!")
 end)
-

@@ -6,7 +6,7 @@
 nvim
 ```
 
-**What happens**: Lazy.nvim installs all plugins automatically. Wait for the message "✨ Neovim ready!"
+**What happens**: Lazy.nvim installs all plugins automatically. Wait for the message "✨ NikaVim ready!"
 
 ## 2️⃣ Install Language Servers (2 minutes)
 

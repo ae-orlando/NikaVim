@@ -1,6 +1,16 @@
-# Neovim Configuration - Complete Setup
-
+# NikaVim - Neovim IDE Distribution
 A modern, feature-rich Neovim configuration with LSP, completion, formatting, and beautiful UI.
+
+---
+
+🚀 Transform Neovim into a powerful IDE within minutes with NikaVim.
+## � Requirements
+
+### Minimum Requirements
+- **Neovim**: v0.9.0 or higher (v0.10+ recommended for best experience)
+- **Git**: For plugin management via Lazy.nvim
+- **Build tools**: GCC/Clang (Linux) or MSVC/MinGW (Windows) or Xcode (macOS)
+---
 
 ## ✨ Features
 
@@ -24,7 +34,7 @@ A modern, feature-rich Neovim configuration with LSP, completion, formatting, an
 - Code refactoring (ThePrimeagen's refactoring.nvim)
 - Smart text objects (mini.ai)
 
-## 📁 Directory Structure
+## �📁 Directory Structure
 
 ```
 ~/.config/nvim/
@@ -280,7 +290,29 @@ If Neovim feels slow:
 - [Telescope](https://github.com/nvim-telescope/telescope.nvim)
 - [Tree-sitter](https://tree-sitter.github.io/tree-sitter/)
 
-## 📝 Notes
+## � Future Improvements
+
+- [ ] Add debugging support (DAP)
+- [ ] Implement project-specific config overrides
+- [ ] Add testing framework integration
+- [ ] Create community snippet library
+- [ ] Add window management plugins
+- [ ] Implement terminal integration improvements
+
+## 🤝 Contributing
+
+We welcome contributions! Please see [CONTRIBUTING.md](./CONTRIBUTING.md) for detailed guidelines on:
+
+- Types of contributions we accept
+- Development setup and workflow
+- Commit message conventions
+- Code style and testing requirements
+- Pull request process
+- Issue reporting templates
+
+---
+
+## �📝 Notes
 
 This configuration is designed for:
 - **Modern development** (JavaScript, Python, Go, Rust, C/C++, etc.)
