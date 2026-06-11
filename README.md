@@ -1,13 +1,9 @@
-# NikaVim
+# 🛸NikaVim
+<p align="center">
+  <img src="images/header.png" alt="NikaVim Header">
+</p>
 
 NikaVim is a modular Neovim distribution for everyday development. It keeps the entry point small, organizes features by concern, and ships with LSP, completion, formatting, search, Git tools, and a polished startup dashboard.
-
-## Requirements
-
-- Neovim 0.9 or newer. Neovim 0.10+ is recommended.
-- Git, for plugin installation through Lazy.nvim.
-- A C/C++ build toolchain for native plugin builds.
-- Optional language runtimes and package managers for the tools you use, such as Node.js, Python, Rust, Go, or Java.
 
 ## Features
 
@@ -21,6 +17,49 @@ NikaVim is a modular Neovim distribution for everyday development. It keeps the 
 - Formatting with conform.nvim and linting with nvim-lint.
 - UI polish with Tokyo Night, Lualine, Bufferline, NvimTree, Dressing, indent guides, and the NikaVim dashboard.
 - Editing helpers for comments, autopairs, surround operations, match navigation, refactoring, and undo history.
+---
+
+## 🚀 Installation
+
+Setting up NikaVim is completely automated. Follow the steps below to transform your terminal into a blazing-fast development engine.
+
+### 📋 Prerequisites
+
+Before installing, make sure your machine has the necessary core utilities installed:
+
+| Dependency | Purpose | Installation (Fedora / RHEL) |
+| :--- | :--- | :--- |
+| **Neovim** (>= 0.10) | Core Editor | `sudo dnf install neovim` |
+| **Git** | Repository Cloning | `sudo dnf install git` |
+| **Tar & Unzip** | Compiling packages | `sudo dnf install tar unzip` |
+| **Ripgrep** | Ultra-fast Telescope fuzzy searching | `sudo dnf install ripgrep` |
+
+- **Make backup of your existing files**
+```
+# required
+mv ~/.config/nvim{,.bak}
+
+# optional but recommended
+mv ~/.local/share/nvim{,.bak}
+mv ~/.local/state/nvim{,.bak}
+mv ~/.cache/nvim{,.bak}
+```
+- **Clone the stater repository**
+```
+git clone https://github.com/ae-orlando/nikavim-starter.git ~/.config/nvim
+```
+- **remove the .git folder**
+```
+rm -rf ~/.config/nvim/.git
+```
+-**start neovim**
+```
+nvim
+```
+- **You end up with something like this:**
+---
+![Maid Dashboard](images/maindashboard.png)
+
 
 ## Quick Start
 
