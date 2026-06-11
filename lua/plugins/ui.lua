@@ -147,16 +147,16 @@ return {
     config = function()
       local function set_dashboard_highlights()
         local highlights = {
-          DashboardHeader = { fg = "#7aa2f7", bold = true },
-          DashboardIcon = { fg = "#bb9af7" },
-          DashboardDesc = { fg = "#c0caf5" },
-          DashboardKey = { fg = "#f7768e", bold = true },
-          DashboardShortCut = { fg = "#7dcfff" },
-          DashboardFooter = { fg = "#565f89", italic = true },
+          DashboardHeader = "Title",
+          DashboardIcon = "Function",
+          DashboardDesc = "String",
+          DashboardKey = "Number",
+          DashboardShortCut = "Identifier",
+          DashboardFooter = "Comment",
         }
 
-        for group, opts in pairs(highlights) do
-          vim.api.nvim_set_hl(0, group, opts)
+        for group, link in pairs(highlights) do
+          vim.api.nvim_set_hl(0, group, { link = link, default = false })
         end
       end
 
@@ -167,21 +167,40 @@ return {
       })
       set_dashboard_highlights()
 
+      local header_art = {
+        "███╗   ██╗██╗██╗  ██╗ █████╗ ██╗   ██╗██╗███╗   ███╗",
+        "████╗  ██║██║██║ ██╔╝██╔══██╗██║   ██║██║████╗ ████║",
+        "██╔██╗ ██║██║█████╔╝ ███████║██║   ██║██║██╔████╔██║",
+        "██║╚██╗██║██║██╔═██╗ ██╔══██║╚██╗ ██╔╝██║██║╚██╔╝██║",
+        "██║ ╚████║██║██║  ██╗██║  ██║ ╚████╔╝ ██║██║ ╚═╝ ██║",
+        "╚═╝  ╚═══╝╚═╝╚═╝  ╚═╝╚═╝  ╚═╝  ╚═══╝  ╚═╝╚═╝     ╚═╝",
+      }
+
+      local header_width = 0
+      for _, line in ipairs(header_art) do
+        header_width = math.max(header_width, vim.api.nvim_strwidth(line))
+      end
+
+      local function center_in_header(text)
+        local text_width = vim.api.nvim_strwidth(text)
+        local padding = math.max(header_width - text_width, 0)
+        local left = math.floor(padding / 2)
+        local right = padding - left
+        return string.rep(" ", left) .. text .. string.rep(" ", right)
+      end
+
+      local dashboard_header = { "" }
+      vim.list_extend(dashboard_header, header_art)
+      vim.list_extend(dashboard_header, {
+        "",
+        center_in_header("Fast tools. Clean motion. Your editor, sharpened."),
+        "",
+      })
+
       require("dashboard").setup({
         theme = "doom",
         config = {
-          header = {
-            "",
-            "  ███╗   ██╗██╗██╗  ██╗ █████╗ ██╗   ██╗██╗███╗   ███╗",
-            "  ████╗  ██║██║██║ ██╔╝██╔══██╗██║   ██║██║████╗ ████║",
-            "  ██╔██╗ ██║██║█████╔╝ ███████║██║   ██║██║██╔████╔██║",
-            "  ██║╚██╗██║██║██╔═██╗ ██╔══██║╚██╗ ██╔╝██║██║╚██╔╝██║",
-            "  ██║ ╚████║██║██║  ██╗██║  ██║ ╚████╔╝ ██║██║ ╚═╝ ██║",
-            "  ╚═╝  ╚═══╝╚═╝╚═╝  ╚═╝╚═╝  ╚═╝  ╚═══╝  ╚═╝╚═╝     ╚═╝",
-            "",
-            "              Fast tools. Clean motion. Your editor, sharpened.",
-            "",
-          },
+          header = dashboard_header,
           center = {
             {
               icon = "  ",

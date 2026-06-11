@@ -90,6 +90,12 @@
 | `K` | Move line up |
 | `<C-Space>` | Start incremental select |
 
+## Editor Navigation
+| Keybind | Action |
+|---------|--------|
+| `<C-CR>` | Insert blank line below (VS Code style) |
+| `<C-n>` | Toggle file explorer |
+
 ## Git Operations (Gitsigns & Fugitive)
 | Keybind | Action |
 |---------|--------|

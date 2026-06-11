@@ -1,323 +1,196 @@
-# NikaVim - Neovim IDE Distribution
-A modern, feature-rich Neovim configuration with LSP, completion, formatting, and beautiful UI.
+# NikaVim
 
----
+NikaVim is a modular Neovim distribution for everyday development. It keeps the entry point small, organizes features by concern, and ships with LSP, completion, formatting, search, Git tools, and a polished startup dashboard.
 
-🚀 Transform Neovim into a powerful IDE within minutes with NikaVim.
-## � Requirements
+## Requirements
 
-### Minimum Requirements
-- **Neovim**: v0.9.0 or higher (v0.10+ recommended for best experience)
-- **Git**: For plugin management via Lazy.nvim
-- **Build tools**: GCC/Clang (Linux) or MSVC/MinGW (Windows) or Xcode (macOS)
----
+- Neovim 0.9 or newer. Neovim 0.10+ is recommended.
+- Git, for plugin installation through Lazy.nvim.
+- A C/C++ build toolchain for native plugin builds.
+- Optional language runtimes and package managers for the tools you use, such as Node.js, Python, Rust, Go, or Java.
 
-## ✨ Features
+## Features
 
-### Core Features
-- **Modern package manager**: Lazy.nvim for fast, lazy-loading plugins
-- **Language Server Protocol (LSP)**: Built-in LSP with Mason for easy LSP/formatter/linter installation
-- **Autocompletion**: nvim-cmp with snippet support (LuaSnip)
-- **Syntax highlighting**: Tree-sitter for accurate syntax highlighting
-- **Fuzzy finder**: Telescope for fast file/buffer/text search
-- **Git integration**: Gitsigns + vim-fugitive for Git operations
-- **Code formatting**: Conform.nvim for multi-language formatting
-- **Linting**: Lint.nvim for code quality checks
-- **Beautiful UI**: Tokyo Night theme, Lualine statusline, indent guides, dashboard
+- Plugin management with Lazy.nvim.
+- Language servers, formatters, and linters managed through Mason.
+- LSP navigation, hover, rename, formatting, diagnostics, and code actions.
+- Completion with nvim-cmp, LuaSnip, and friendly snippets.
+- Tree-sitter highlighting, text objects, and incremental selection.
+- Telescope file search, text search, buffers, help tags, commands, and recent files.
+- Git integration with Gitsigns and vim-fugitive.
+- Formatting with conform.nvim and linting with nvim-lint.
+- UI polish with Tokyo Night, Lualine, Bufferline, NvimTree, Dressing, indent guides, and the NikaVim dashboard.
+- Editing helpers for comments, autopairs, surround operations, match navigation, refactoring, and undo history.
 
-### Editing Enhancements
-- Comment.nvim for easy code commenting
-- Auto-pairs for automatic bracket closing
-- Surround.nvim for quote/bracket manipulation
-- Undo tree visualization
-- Better match highlighting (vim-matchup)
-- Code refactoring (ThePrimeagen's refactoring.nvim)
-- Smart text objects (mini.ai)
+## Quick Start
 
-## �📁 Directory Structure
-
-```
-~/.config/nvim/
-├── init.lua                 # Main entry point (minimal & clean)
-├── lazy-lock.json          # Plugin lock file
-├── lua/
-│   ├── core/
-│   │   ├── init.lua        # Loads core modules
-│   │   ├── options.lua     # Neovim settings
-│   │   └── keymaps.lua     # Keyboard mappings
-│   └── plugins/
-│       ├── init.lua        # Plugin loader
-│       ├── ui.lua          # UI plugins (theme, statusline, etc)
-│       ├── treesitter.lua  # Syntax highlighting
-│       ├── lsp.lua         # Language server setup
-│       ├── completion.lua  # Autocompletion
-│       ├── telescope.lua   # Fuzzy finder
-│       ├── editing.lua     # Editor enhancements
-│       ├── formatting.lua  # Code formatting & linting
-│       └── git.lua         # Git integration
-```
-
-## 🚀 Quick Start
-
-### 1. Install Dependencies
-
-**Linux/macOS:**
-```bash
-# Install build tools
-sudo apt-get install build-essential cmake  # Ubuntu/Debian
-# or
-brew install cmake  # macOS
-
-# Install Python for deno/node support
-python3 -m pip install --user pynvim
-```
-
-**Windows:**
-```bash
-# Install MSVC Build Tools or MinGW
-# Install Python
-python -m pip install pynvim
-```
-
-### 2. First Launch
+Open Neovim:
 
 ```bash
 nvim
 ```
 
-Lazy.nvim will automatically install all plugins. This may take a minute on first launch.
+Lazy.nvim installs plugins automatically on first launch. Wait for the `NikaVim ready!` message.
 
-### 3. Install LSP Servers
+Install common language servers:
 
-Open Neovim and run:
 ```vim
 :Mason
 ```
 
-This opens the Mason UI where you can install language servers. Install:
-- `lua_ls` (Lua)
-- `pyright` (Python)
-- `ts_ls` (JavaScript/TypeScript)
-- `html` (HTML)
-- `cssls` (CSS)
-- Any other language you need
+Recommended first installs:
 
-**Or install via command line:**
+- `lua_ls` for Lua
+- `pyright` for Python
+- `ts_ls` for JavaScript and TypeScript
+- `html` for HTML
+- `cssls` for CSS
+
+You can also install a starter set from the command line:
+
 ```bash
 nvim --headless +MasonInstall\ lua_ls\ pyright\ ts_ls\ html\ cssls +qa
 ```
 
-### 4. Install Formatters & Linters (Optional)
+## Project Layout
 
-```vim
-:Mason
+```text
+~/.config/nvim/
+|-- init.lua                 # Entry point
+|-- lazy-lock.json           # Plugin lock file
+|-- lua/
+|   |-- core/
+|   |   |-- init.lua         # Core module loader
+|   |   |-- options.lua      # Editor options
+|   |   `-- keymaps.lua      # Global keymaps
+|   `-- plugins/
+|       |-- init.lua         # Plugin module loader
+|       |-- ui.lua           # Theme, statusline, explorer, dashboard
+|       |-- treesitter.lua   # Syntax highlighting and text objects
+|       |-- lsp.lua          # LSP and Mason setup
+|       |-- completion.lua   # Completion and snippets
+|       |-- telescope.lua    # Fuzzy finding
+|       |-- editing.lua      # Editing helpers
+|       |-- formatting.lua   # Formatting and linting
+|       `-- git.lua          # Git integration
+|-- README.md                # Overview
+|-- QUICKSTART.md            # Short first-run guide
+|-- SETUP.md                 # Full setup checklist
+|-- KEYMAPS.md               # Keymap reference
+|-- ADVANCED.md              # Customization and troubleshooting
+|-- CHANGELOG.md             # Version history
+`-- CONTRIBUTING.md          # Contribution guide
 ```
 
-Install:
-- `stylua` (Lua formatting)
-- `black` (Python)
-- `prettier` (JS/TS)
-- `pylint` (Python linting)
-- `eslint_d` (JS/TS linting)
+## Essential Keymaps
 
-## ⌨️ Key Mappings
+The leader key is `<Space>`.
 
-### Leader Key: `<Space>`
+| Key | Action |
+| --- | --- |
+| `<Space>ff` | Find files |
+| `<Space>fg` | Search text |
+| `<Space>fb` | Find buffers |
+| `<Space>fr` | Recent files |
+| `<C-n>` | Toggle file explorer |
+| `K` | Hover documentation |
+| `gd` | Go to definition |
+| `gr` | Go to references |
+| `<F2>` | Rename symbol |
+| `<F3>` | Format buffer or selection |
+| `<F4>` | Code action |
+| `<Space>gs` | Git status |
+| `<Space>l` | Lazy plugin manager |
+| `<Space>m` | Mason package manager |
 
-#### File & Buffer Management
-- `<leader>ff` - Find files
-- `<leader>fg` - Live grep (search in files)
-- `<leader>fb` - Find buffers
-- `<leader>fr` - Recent files
-- `<leader>fh` - Help tags
-- `<leader>fc` - Commands
-- `<Tab>` - Next buffer
-- `<S-Tab>` - Previous buffer
-- `<leader>bd` - Delete buffer
-- `<leader>w` - Save
-- `<leader>q` - Quit
+See [KEYMAPS.md](./KEYMAPS.md) for the full reference.
 
-#### Navigation
-- `<C-h/j/k/l>` - Move between splits
-- `<C-Up/Down/Left/Right>` - Resize splits
-- `<C-n>` - Toggle file explorer
-- `<leader>e` - Focus file explorer
+## Common Tasks
 
-#### Code Editing
-- `jk` - Exit insert mode
-- `<F2>` - Rename symbol (LSP)
-- `<F3>` - Format code
-- `<F4>` - Code actions (LSP)
-- `<C-j/k>` - Jump to next/prev snippet
-- `gc` - Toggle comment (in visual mode or on line)
-- `ys<motion><char>` - Surround with char (surround.nvim)
-- `cs<old><new>` - Change surrounding
-- `<C-Space>` - Start incremental selection
+### Add a Plugin
 
-#### Search & Navigation
-- `/` or `?` - Search
-- `n/N` - Next/previous result (centered)
-- `<Esc>` - Clear search highlight
-- `*/#` - Search word under cursor
-- `K` - Hover LSP documentation
-- `gd` - Go to definition
-- `gD` - Go to declaration
-- `gi` - Go to implementation
-- `gr` - Go to references
-- `go` - Go to type definition
-
-#### Git Operations
-- `]c/[c` - Next/previous git change
-- `<leader>hs` - Stage hunk
-- `<leader>hu` - Undo stage hunk
-- `<leader>hr` - Reset hunk
-- `<leader>hp` - Preview hunk
-- `<leader>hb` - Blame line
-- `<leader>tb` - Toggle blame
-- `<leader>hd` - Diff this file
-- `<leader>gc` - Git commit
-- `<leader>gp` - Git push
-- `<leader>gl` - Git log
-- `<leader>gs` - Git status
-
-#### Tools
-- `<leader>l` - Lazy plugin manager
-- `<leader>m` - Mason package manager
-- `<leader>u` - Undo tree
-- `<leader>t` - Terminal
-- `<leader>fp` - Format with conform
-- `<leader>fl` - Lint with nvim-lint
-
-#### Terminal Mode
-- `<Esc>` - Exit terminal mode
-
-## 📚 Common Tasks
-
-### Adding a New Plugin
-
-Edit `lua/plugins/` and add to the appropriate file:
+Add the plugin spec to the most relevant file in `lua/plugins/`:
 
 ```lua
 {
   "author/plugin.nvim",
-  event = "BufReadPost",  -- Load when editing buffer
+  event = "BufReadPost",
   config = function()
     require("plugin").setup({})
   end,
 }
 ```
 
-Then run `:Lazy` and Lazy will install it automatically.
+Then run:
 
-### Adding Custom Keymaps
-
-Edit `lua/core/keymaps.lua`:
-
-```lua
-map("n", "<leader>xx", function()
-  -- Your function here
-end, { desc = "Description" })
-```
-
-### Configuring LSP for a New Language
-
-1. Install the LSP in Mason: `:Mason` and search/install
-2. It should work automatically via `mason-lspconfig`
-3. For custom config, edit `lua/plugins/lsp.lua` and add to handlers
-
-### Changing Color Scheme
-
-Edit `lua/plugins/ui.lua` and change the colorscheme:
-
-```lua
-require("tokyonight").setup({
-  style = "night",  -- "night", "storm", "day", "moon"
-})
-```
-
-Or install a different theme and update this section.
-
-## 🔧 Customization
-
-### Options
-
-Edit `lua/core/options.lua` to modify:
-- Tab/indent settings
-- Number display
-- Search behavior
-- Performance settings
-- etc.
-
-### Performance Tuning
-
-If Neovim feels slow:
-
-1. Check startup time: `nvim --startuptime startup.log` then `:e startup.log`
-2. Lazy-load more plugins by adding `event`, `cmd`, or `keys` triggers
-3. Check for heavy plugin configurations
-4. Use `:checkhealth` to identify issues
-
-## 🐛 Troubleshooting
-
-### Plugins not installing
 ```vim
 :Lazy sync
 ```
 
-### LSP not working
-```vim
-:Mason  " Install language servers
-:checkhealth  " Check for configuration issues
+### Add a Keymap
+
+Edit `lua/core/keymaps.lua`:
+
+```lua
+map("n", "<leader>x", function()
+  -- your action
+end, { desc = "Describe the action" })
 ```
 
-### Colors look wrong
+### Add a Language Server
+
+Install the server in Mason:
+
 ```vim
-:set background=dark
-:colorscheme tokyonight
+:Mason
 ```
 
-### Performance issues
-```vim
-:LspInfo  " Check active LSP servers
-:Lazy profile  " Check plugin load times
+Most servers are configured automatically by `mason-lspconfig`. For custom behavior, edit `lua/plugins/lsp.lua`.
+
+### Change the Theme
+
+The default theme is configured in `lua/plugins/ui.lua`.
+
+For Tokyo Night variants, change the `style` field:
+
+```lua
+require("tokyonight").setup({
+  style = "night",
+})
 ```
 
-## 📖 Resources
+Available Tokyo Night styles include `night`, `storm`, `moon`, and `day`.
 
-- [Neovim Docs](https://neovim.io/doc/user/)
-- [Lazy.nvim](https://github.com/folke/lazy.nvim)
-- [LSP Config](https://github.com/neovim/nvim-lspconfig)
-- [Telescope](https://github.com/nvim-telescope/telescope.nvim)
-- [Tree-sitter](https://tree-sitter.github.io/tree-sitter/)
+## Troubleshooting
 
-## � Future Improvements
+Run health checks first:
 
-- [ ] Add debugging support (DAP)
-- [ ] Implement project-specific config overrides
-- [ ] Add testing framework integration
-- [ ] Create community snippet library
-- [ ] Add window management plugins
-- [ ] Implement terminal integration improvements
+```vim
+:checkhealth
+```
 
-## 🤝 Contributing
+Common fixes:
 
-We welcome contributions! Please see [CONTRIBUTING.md](./CONTRIBUTING.md) for detailed guidelines on:
+| Problem | Try |
+| --- | --- |
+| Plugins are missing | `:Lazy sync` |
+| LSP is not attached | `:LspInfo` and `:Mason` |
+| Completion is quiet | Install the relevant language server in Mason |
+| Formatting is not working | Install the formatter in Mason and check `lua/plugins/formatting.lua` |
+| Startup feels slow | `:Lazy profile` or `nvim --startuptime startup.log` |
 
-- Types of contributions we accept
-- Development setup and workflow
-- Commit message conventions
-- Code style and testing requirements
-- Pull request process
-- Issue reporting templates
+See [ADVANCED.md](./ADVANCED.md) for deeper customization and troubleshooting notes.
 
----
+## Documentation
 
-## �📝 Notes
+- [INDEX.md](./INDEX.md): documentation map
+- [QUICKSTART.md](./QUICKSTART.md): quickest path to a working editor
+- [SETUP.md](./SETUP.md): fuller setup checklist
+- [KEYMAPS.md](./KEYMAPS.md): keyboard reference
+- [ADVANCED.md](./ADVANCED.md): customization and troubleshooting
+- [CHANGELOG.md](./CHANGELOG.md): release notes
+- [CONTRIBUTING.md](./CONTRIBUTING.md): contribution guide
 
-This configuration is designed for:
-- **Modern development** (JavaScript, Python, Go, Rust, C/C++, etc.)
-- **Extensibility** (easy to add plugins and customize)
-- **Performance** (lazy loading plugins as needed)
-- **User experience** (beautiful UI and intuitive keymaps)
+## Notes
 
-Feel free to modify any part to suit your workflow!
+NikaVim is meant to be edited. The configuration is split into small files so you can remove features, swap plugins, or add your own workflow without digging through a monolithic `init.lua`.

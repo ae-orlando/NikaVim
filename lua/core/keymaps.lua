@@ -107,3 +107,11 @@ map("t", "<Esc>", "<C-\\><C-n>", { desc = "Exit terminal" })
 -- Better visuals for redo/undo
 -- ============================================
 map("n", "<leader>u", ":UndotreeToggle<CR>", { desc = "Toggle undo tree" })
+
+-- =============================================
+-- Moving to lines easilu
+-- =============================================
+-- Insert new line below like VS Code (Ctrl + Enter)
+-- Works in both Normal mode and Insert mode
+vim.keymap.set("n", "<C-Enter>", "o<Esc>", { desc = "Insert newline below" })
+vim.keymap.set("i", "<C-Enter>", "<Esc>o", { desc = "Insert newline below" })

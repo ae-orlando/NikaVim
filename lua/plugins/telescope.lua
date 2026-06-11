@@ -4,7 +4,7 @@
 return {
   {
     "nvim-telescope/telescope.nvim",
-    branch = "0.1.x",
+        branch = "0.1.x",
     dependencies = {
       "nvim-lua/plenary.nvim",
       { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
@@ -24,6 +24,10 @@ return {
             "__pycache__",
             ".venv",
           },
+        
+          preview = {
+          treesitter = false,
+        },
           mappings = {
             i = {
               ["<C-k>"] = actions.move_selection_previous,

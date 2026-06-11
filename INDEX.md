@@ -1,230 +1,95 @@
-% NikaVim - Neovim IDE Distribution
+# NikaVim Documentation Index
 
-# Welcome to NikaVim! 🚀
+Use this file as the map for the rest of the documentation.
 
-NikaVim is a modern Neovim IDE distribution with professional-grade tools, features, and documentation.
+## Start Here
 
-## 📖 Where to Start?
+| Goal | Read |
+| --- | --- |
+| Get running quickly | [QUICKSTART.md](./QUICKSTART.md) |
+| Complete first-time setup | [SETUP.md](./SETUP.md) |
+| Learn the keymaps | [KEYMAPS.md](./KEYMAPS.md) |
+| Understand the full configuration | [README.md](./README.md) |
+| Customize or troubleshoot | [ADVANCED.md](./ADVANCED.md) |
+| Review changes over time | [CHANGELOG.md](./CHANGELOG.md) |
+| Contribute changes | [CONTRIBUTING.md](./CONTRIBUTING.md) |
 
-### 🎯 **I just want to get started** (5 minutes)
-→ **Read**: [QUICKSTART.md](./QUICKSTART.md)
-- Install plugins
-- Set up language servers  
-- Try key features immediately
+## First Run
 
-### 🎨 **I want to understand what was improved**
-→ **Read**: [IMPROVEMENTS.md](./IMPROVEMENTS.md)
-- See what's new vs old
-- Feature comparison table
-- Statistics & improvements
+1. Open Neovim:
 
-### 🛠️ **I want to set everything up properly**
-→ **Read**: [SETUP.md](./SETUP.md)
-- Complete installation checklist
-- Verify everything is working
-- Troubleshooting guide
-
-### ⌨️ **I want to learn all the keybindings**
-→ **Read**: [KEYMAPS.md](./KEYMAPS.md)
-- 80+ organized keybindings
-- Quick reference table
-- Grouped by feature
-
-### 📚 **I want full documentation**
-→ **Read**: [README.md](./README.md)
-- Feature overview
-- Installation instructions
-- Common tasks & workflows
-- Resources & links
-
-### 🔧 **I want to customize and optimize**
-→ **Read**: [ADVANCED.md](./ADVANCED.md)
-- Performance optimization
-- Custom configuration examples
-- Adding new languages/plugins
-- Debugging and troubleshooting
-
----
-
-## 🎯 Quick Navigation
-
-| Goal | File |
-|------|------|
-| **Get started in 5 min** | [QUICKSTART.md](./QUICKSTART.md) |
-| **See all improvements** | [IMPROVEMENTS.md](./IMPROVEMENTS.md) |
-| **Complete setup guide** | [SETUP.md](./SETUP.md) |
-| **Learn keybindings** | [KEYMAPS.md](./KEYMAPS.md) |
-| **Full documentation** | [README.md](./README.md) |
-| **Customize & optimize** | [ADVANCED.md](./ADVANCED.md) |
-| **Version history** | [CHANGELOG.md](./CHANGELOG.md) |
-| **How to contribute** | [CONTRIBUTING.md](./CONTRIBUTING.md) |
-
----
-
-## ✨ What's New?
-
-✅ **30+ professional plugins**  
-✅ **Language Server Protocol (LSP)** with 10+ languages  
-✅ **Intelligent autocompletion** (nvim-cmp)  
-✅ **Advanced syntax highlighting** (Tree-sitter)  
-✅ **Fuzzy finding** (Telescope)  
-✅ **Code formatting & linting** (Conform + Lint)  
-✅ **Git integration** (Gitsigns + Fugitive)  
-✅ **Beautiful UI** (Tokyo Night theme, dashboard, statusline)  
-✅ **80+ keybindings** organized by feature  
-✅ **4 comprehensive guides** with 2000+ lines of documentation  
-
----
-
-## 🚀 First Time? Start Here
-
-1. **Open Neovim**
    ```bash
    nvim
    ```
-   Wait for "✨ NikaVim ready!" message
 
-2. **Read Quick Start**
-   Open [QUICKSTART.md](./QUICKSTART.md) in another terminal or after closing Neovim
+2. Wait for the `NikaVim ready!` message.
 
-3. **Install Language Servers**
-   - Press `:Mason` in Neovim
-   - Install servers for your languages
+3. Install language servers:
 
-4. **Learn Keybindings**
-   - Open [KEYMAPS.md](./KEYMAPS.md)
-   - Start with `<Space>ff` (find files) and `<Space>fg` (search)
+   ```vim
+   :Mason
+   ```
 
-5. **Customize** (optional)
-   - Edit files in `lua/` directory
-   - See [ADVANCED.md](./ADVANCED.md) for examples
+4. Try the core navigation keys:
 
----
+   | Key | Action |
+   | --- | --- |
+   | `<Space>ff` | Find files |
+   | `<Space>fg` | Search text |
+   | `<Space>fb` | Find buffers |
+   | `<C-n>` | Toggle file explorer |
+   | `K` | Hover documentation |
+   | `gd` | Go to definition |
 
-## 📁 Directory Structure
+## Configuration Map
 
-```
+```text
 ~/.config/nvim/
-├── README.md           # Full documentation
-├── QUICKSTART.md       # 5-minute setup
-├── SETUP.md           # Setup checklist
-├── KEYMAPS.md         # Keyboard reference
-├── IMPROVEMENTS.md    # What was improved
-├── ADVANCED.md        # Customization guide
-├── INDEX.md           # This file
-├── setup.sh           # Automated setup
-├── .gitignore         # Git ignore rules
-├── init.lua           # Main entry (30 lines!)
-├── lazy-lock.json     # Plugin lock file
-└── lua/
-    ├── core/
-    │   ├── options.lua    # Vim settings
-    │   ├── keymaps.lua    # 80+ keybindings
-    │   └── init.lua       # Module loader
-    └── plugins/
-        ├── ui.lua         # Theme, statusline, explorer, dashboard
-        ├── lsp.lua        # Language servers (LSP)
-        ├── completion.lua # Autocompletion (cmp)
-        ├── treesitter.lua # Syntax highlighting
-        ├── telescope.lua  # Fuzzy finder
-        ├── editing.lua    # Comments, pairs, surround, etc
-        ├── formatting.lua # Code formatting & linting
-        ├── git.lua        # Git integration
-        └── init.lua       # Plugin loader
+|-- init.lua
+|-- lua/
+|   |-- core/
+|   |   |-- options.lua
+|   |   `-- keymaps.lua
+|   `-- plugins/
+|       |-- ui.lua
+|       |-- treesitter.lua
+|       |-- lsp.lua
+|       |-- completion.lua
+|       |-- telescope.lua
+|       |-- editing.lua
+|       |-- formatting.lua
+|       `-- git.lua
+`-- docs and project files
 ```
 
----
+## Feature Areas
 
-## 🎯 Common Tasks
+| Area | Main Files |
+| --- | --- |
+| Editor options | `lua/core/options.lua` |
+| Global keymaps | `lua/core/keymaps.lua` |
+| Theme and dashboard | `lua/plugins/ui.lua` |
+| LSP and Mason | `lua/plugins/lsp.lua` |
+| Completion and snippets | `lua/plugins/completion.lua` |
+| Search | `lua/plugins/telescope.lua` |
+| Formatting and linting | `lua/plugins/formatting.lua` |
+| Git | `lua/plugins/git.lua` |
+| Editing helpers | `lua/plugins/editing.lua` |
+| Syntax highlighting | `lua/plugins/treesitter.lua` |
 
-### **I want to find a file**
-Press: `<Space>ff`
+## Common Commands
 
-### **I want to search for text**
-Press: `<Space>fg`
-
-### **I want code completion**
-Press: `<Ctrl-Space>` while typing
-
-### **I want to format code**
-Press: `<F3>` (auto-formats on save too!)
-
-### **I want to see git status**
-Press: `<Space>gs`
-
-### **I want to go to a definition**
-Press: `gd` with cursor on the code
-
-### **I want to see hover documentation**
-Press: `K` with cursor on the code
-
-### **I want to rename a symbol**
-Press: `<F2>` with cursor on the symbol
-
-See [KEYMAPS.md](./KEYMAPS.md) for 80+ more keybindings!
-
----
-
-## 🆘 Troubleshooting
-
-### **Plugins not installed?**
 ```vim
-:Lazy sync
+:Lazy          " Manage plugins
+:Mason         " Install language servers, formatters, and linters
+:checkhealth   " Diagnose setup issues
+:LspInfo       " Inspect active language servers
+:Lazy profile  " Inspect plugin startup cost
 ```
 
-### **Language servers not working?**
-```vim
-:Mason
-" Install the servers for your language
-```
+## Customization Path
 
-### **Check system status**
-```vim
-:checkhealth
-```
-
-For detailed troubleshooting, see [ADVANCED.md](./ADVANCED.md#common-issues--solutions)
-
----
-
-## 💡 Pro Tips
-
-- **Jk to exit insert mode**: Press `j` then `k` quickly instead of Escape
-- **Space is the leader**: All commands start with `<Space>` (spacebar)
-- **Use Telescope for everything**: `<Space>ff`, `<Space>fg`, `<Space>fb`
-- **Format on save**: Just save normally, formatting happens automatically
-- **Git hunks**: Use `]c` and `[c` to navigate changes
-
----
-
-## 📞 Still Need Help?
-
-1. **Check the guides**: [README.md](./README.md), [ADVANCED.md](./ADVANCED.md)
-2. **Search keybindings**: [KEYMAPS.md](./KEYMAPS.md)
-3. **Neovim help**: `:help` inside Neovim
-4. **Checkup**: Run `:checkhealth` to identify issues
-
----
-
-## 🎉 Ready to Code?
-
-Open a file and start coding:
-```bash
-nvim yourfile.py
-nvim .           # Open current folder
-```
-
-Your editor now has:
-- ✨ Beautiful interface
-- 🧠 Smart autocompletion
-- 🚀 Lightning-fast search
-- 🔧 Code formatting & linting
-- 🌳 Syntax highlighting
-- 🐙 Git integration
-- 📚 Language server support
-
-**Happy coding!** 🚀
-
----
-
-**Pro Developer Setup Complete!** This is now a world-class code editor. Enjoy! 💎
+1. Start with [README.md](./README.md) for the project shape.
+2. Change keymaps in `lua/core/keymaps.lua`.
+3. Change plugin behavior in the relevant `lua/plugins/*.lua` file.
+4. Use [ADVANCED.md](./ADVANCED.md) when you need examples or troubleshooting notes.
