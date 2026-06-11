@@ -1,30 +1,142 @@
-# Neovim config .gitignore
+-- ~/.config/nvim/init.lua
+-- Complete Visual Makeover
 
-# Plugin directories
-# lazy-lock.json  # Commented out to track plugin versions for reproducibility
+-- Enable modern features
+vim.opt.termguicolors = true
+vim.opt.signcolumn = "yes"
+vim.opt.cursorline = true
+vim.opt.number = true
+vim.opt.relativenumber = true
+vim.opt.scrolloff = 8  -- Keep cursor centered
 
-# Mason (language servers, formatters, linters)
-.nvim/
-mason/
+-- Bootstrap lazy.nvim
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable",
+    lazypath,
+  })
+end
+vim.opt.rtp:prepend(lazypath)
 
-# Startup logs
-startup.log
+-- Install all visual plugins
+require("lazy").setup({
+  -- Beautiful colorscheme (Tokyo Night - modern and sleek)
+  {
+    "folke/tokyonight.nvim",
+    lazy = false,
+    priority = 1000,
+    config = function()
+      require("tokyonight").setup({
+        style = "night",
+        transparent = false,
+        styles = {
+          comments = { italic = true },
+          keywords = { bold = true },
+        },
+      })
+      vim.cmd.colorscheme("tokyonight")
+    end,
+  },
+  
+  -- Modern statusline (looks like VSCode)
+  {
+    "nvim-lualine/lualine.nvim",
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    config = function()
+      require("lualine").setup({
+        options = {
+          theme = "tokyonight",
+          component_separators = { left = "", right = "" },
+          section_separators = { left = "", right = "" },
+        },
+        sections = {
+          lualine_a = { "mode" },
+          lualine_b = { "branch" },
+          lualine_c = { "filename" },
+          lualine_x = { "encoding", "filetype" },
+          lualine_y = { "progress" },
+          lualine_z = { "location" },
+        },
+      })
+    end,
+  },
+  
+  -- File icons (beautiful icons everywhere)
+  {
+    "nvim-tree/nvim-web-devicons",
+    lazy = true,
+  },
+  
+  -- Modern file explorer
+  {
+    "nvim-tree/nvim-tree.lua",
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    config = function()
+      require("nvim-tree").setup({
+        view = {
+          width = 30,
+          side = "left",
+        },
+        renderer = {
+          icons = {
+            show = {
+              file = true,
+              folder = true,
+              folder_arrow = true,
+            },
+          },
+        },
+      })
+    end,
+  },
+  
+  -- Buffer line (tabs at the top)
+  {
+    "akinsho/bufferline.nvim",
+    version = "*",
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    config = function()
+      require("bufferline").setup({
+        options = {
+          mode = "tabs",
+          separator_style = "slant",
+          always_show_bufferline = true,
+        },
+      })
+    end,
+  },
+  
+  -- Transparent background effect
+  {
+    "xiyaowong/transparent.nvim",
+    config = function()
+      require("transparent").setup({
+        enable = true,
+        extra_groups = { "NormalFloat", "NvimTreeNormal" },
+      })
+    end,
+  },
+})
 
-# LSP logs
-log.txt
+-- Keymaps for visual features
+local map = vim.keymap.set
 
-# Temporary files
-*.swp
-*.swo
-*~
-.DS_Store
+-- Toggle file explorer
+map("n", "<C-n>", ":NvimTreeToggle<CR>", { desc = "Toggle file explorer" })
+map("n", "<leader>e", ":NvimTreeFocus<CR>", { desc = "Focus file explorer" })
 
-# Undo/backup directories (if created)
-.undo/
-.backup/
+-- Better split navigation
+map("n", "<C-h>", "<C-w>h", { desc = "Move left" })
+map("n", "<C-l>", "<C-w>l", { desc = "Move right" })
+map("n", "<C-j>", "<C-w>j", { desc = "Move down" })
+map("n", "<C-k>", "<C-w>k", { desc = "Move up" })
 
-# Session files
-session/
+-- Save with Ctrl+S
+map("n", "<C-s>", ":w<CR>", { desc = "Save file" })
 
-# Working directories
-.cache/
+print("🎨 Visual setup complete! Press Ctrl+N to see file explorer")
