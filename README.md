@@ -35,6 +35,7 @@ Before installing, make sure your machine has the necessary core utilities insta
 | **Ripgrep** | Ultra-fast Telescope fuzzy searching | `sudo dnf install ripgrep` |
 
 - **Make backup of your existing files**
+---
 ```
 # required
 mv ~/.config/nvim{,.bak}
@@ -44,18 +45,22 @@ mv ~/.local/share/nvim{,.bak}
 mv ~/.local/state/nvim{,.bak}
 mv ~/.cache/nvim{,.bak}
 ```
+---
 - **Clone the stater repository**
 ```
 git clone https://github.com/ae-orlando/nikavim-starter.git ~/.config/nvim
 ```
+---
 - **remove the .git folder**
 ```
 rm -rf ~/.config/nvim/.git
 ```
+---
 -**start neovim**
 ```
 nvim
 ```
+---
 - **You end up with something like this:**
 ---
 ![Maid Dashboard](images/maindashboard.png)
