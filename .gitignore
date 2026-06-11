@@ -1,0 +1,30 @@
+# Neovim config .gitignore
+
+# Plugin directories
+# lazy-lock.json  # Commented out to track plugin versions for reproducibility
+
+# Mason (language servers, formatters, linters)
+.nvim/
+mason/
+
+# Startup logs
+startup.log
+
+# LSP logs
+log.txt
+
+# Temporary files
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Undo/backup directories (if created)
+.undo/
+.backup/
+
+# Session files
+session/
+
+# Working directories
+.cache/
