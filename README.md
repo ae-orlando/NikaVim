@@ -60,7 +60,7 @@ rm -rf ~/.config/nvim/.git
 ```
 nvim
 ```
----
+--- 
 - **You end up with something like this:**
 ---
 ![Maid Dashboard](images/maindashboard.png)
