@@ -253,6 +253,9 @@ return {
         end
       end)
 
+      -- Track dashboard buffer so we can wipe it when real content opens
+      local dashboard_buf = vim.api.nvim_get_current_buf()
+
       require("dashboard").setup({
         theme = "doom",
         config = {
@@ -426,6 +429,19 @@ return {
           end,
           vertical_center = true,
         },
+      })
+
+      -- Automatically wipe the dashboard buffer once the user opens
+      -- a *new* buffer (e.g. :Man, :help, :Telescope file pick).
+      -- We guard against :e (which reuses the current buffer) by
+      -- comparing the event's buffer against dashboard_buf.
+      vim.api.nvim_create_autocmd({ "BufReadPost", "BufNewFile" }, {
+        once = true,
+        callback = function(ctx)
+          if vim.api.nvim_buf_is_valid(dashboard_buf) and ctx.buf ~= dashboard_buf then
+            pcall(vim.api.nvim_buf_delete, dashboard_buf, { force = true })
+          end
+        end,
       })
     end,
   },
