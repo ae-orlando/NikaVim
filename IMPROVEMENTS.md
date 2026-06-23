@@ -34,12 +34,19 @@
         ├── init.lua (plugin loader)
         ├── ui.lua (theme, statusline, explorer, dashboard, etc)
         ├── treesitter.lua (syntax highlighting)
-        ├── lsp.lua (language servers, mason)
-        ├── completion.lua (cmp, snippets)
+        ├── lsp.lua (language servers, mason, inlay hints)
+        ├── completion.lua (cmp, snippets, copilot source)
         ├── telescope.lua (fuzzy finder)
         ├── editing.lua (comments, pairs, surround, refactoring, etc)
         ├── formatting.lua (code formatting & linting)
-        └── git.lua (git integration)
+        ├── git.lua (git integration)
+        ├── whichkey.lua (keybinding discovery popup)          ← NEW
+        ├── trouble.lua (diagnostics/symbols panel)            ← NEW
+        ├── debug.lua (DAP debugger)                           ← NEW
+        ├── markdown.lua (in-buffer markdown preview)          ← NEW
+        ├── project.lua (project detection & switching)        ← NEW
+        ├── copilot.lua (GitHub Copilot AI suggestions)        ← NEW
+        └── test.lua (neotest test runner)                     ← NEW
 ```
 
 ### ✨ New Features Added
@@ -122,7 +129,41 @@
 - `<leader>gc` - Commit
 - `<leader>gp` - Push
 
-See [KEYMAPS.md](./KEYMAPS.md) for complete list (80+ keybindings!)
+See [KEYMAPS.md](./KEYMAPS.md) for complete list (100+ keybindings!)
+
+#### 11. **Keybinding Discovery**
+- Which-key popup on `<Space>` press shows available keymaps
+- Group labels for Debug, Format/Find, Git, Search, Test/Terminal
+
+#### 12. **Diagnostics Panel**
+- Trouble.nvim: toggleable problems/symbols panel like VSCode
+- Keymaps: `<leader>xx` (all diagnostics), `xX` (buffer), `xs` (symbols)
+
+#### 13. **Full Debugger**
+- nvim-dap with UI: breakpoints, step, continue, conditional breakpoints
+- DAP UI sidebar with variables, watches, stacks, breakpoints
+- Mason-managed debug adapters (python, js, codelldb)
+
+#### 14. **Test Runner**
+- Neotest with adapters for Python, Lua (plenary), Vitest, Google Test
+- Run nearest, file-level, or all tests with summary and output views
+
+#### 15. **Project Management**
+- Auto-detect project roots (.git, package.json, Cargo.toml, etc.)
+- Telescope `<leader>pp` to switch projects instantly
+
+#### 16. **Markdown Preview**
+- In-buffer rendered markdown with render-markdown.nvim
+- Auto-activates on markdown files
+
+#### 17. **Inlay Hints**
+- LSP type hints inline (VSCode-style parameter names, inferred types)
+- Enabled at LspAttach via `vim.lsp.inlay_hint.enable(true)`
+
+#### 18. **GitHub Copilot**
+- AI code suggestions in insert mode via copilot.vim
+- `<M-l>` to accept, `<M-]>`/`<M-[>` to cycle suggestions
+- Integrated with nvim-cmp completion menu
 
 #### 10. **Package Management**
 - Lazy.nvim with smart lazy-loading
@@ -165,9 +206,9 @@ See [KEYMAPS.md](./KEYMAPS.md) for complete list (80+ keybindings!)
 
 | Aspect | Before | After |
 |--------|--------|-------|
-| **Organization** | Monolithic | Modular (8 plugin files) |
-| **LSP** | None | Full setup with Mason |
-| **Completion** | None | nvim-cmp + snippets |
+| **Organization** | Monolithic | Modular (16 plugin files) |
+| **LSP** | None | Full setup with Mason + inlay hints |
+| **Completion** | None | nvim-cmp + snippets + copilot source |
 | **Treesitter** | None | Full setup + text objects |
 | **Search** | None | Telescope with FZF |
 | **Formatting** | None | Conform + auto-format |
@@ -176,8 +217,16 @@ See [KEYMAPS.md](./KEYMAPS.md) for complete list (80+ keybindings!)
 | **Comments** | None | Comment.nvim |
 | **Editing** | Basic | Auto-pairs, surround, refactor |
 | **UI** | Basic | Dashboard, indent guides, dressing |
-| **Keymaps** | ~20 | 80+ organized keybindings |
+| **Keymaps** | ~20 | 100+ organized keybindings |
 | **Documentation** | None | 4 comprehensive guides |
+| **Keybinding discovery** | None | Which-key popup on `<Space>` |
+| **Diagnostics panel** | None | Trouble (like VSCode Problems) |
+| **Debugger** | None | nvim-dap + DAP UI (breakpoints, step, watch) |
+| **Test runner** | None | Neotest (nearest/file/all) |
+| **Project manager** | None | project.nvim + Telescope picker |
+| **Markdown preview** | None | In-buffer rendered markdown |
+| **Inlay hints** | None | LSP inline type hints |
+| **Copilot** | None | GitHub Copilot AI suggestions |
 
 ### ⚡ Performance Features
 
@@ -225,12 +274,12 @@ Configured for (install via Mason):
 
 ## 📊 Statistics
 
-- **Files created**: 8 new files
-- **Lines of code**: ~1500 (modular, well-organized)
-- **Plugins configured**: 30+ quality plugins
+- **Files created**: 15 new files
+- **Lines of code**: ~1800 (modular, well-organized)
+- **Plugins configured**: 56+ quality plugins
 - **Language servers**: 10+ languages supported
-- **Keybindings**: 80+ organized shortcuts
-- **Documentation**: 2000+ lines of guides
+- **Keybindings**: 100+ organized shortcuts
+- **Documentation**: 2500+ lines of guides
 
 ## 💡 Key Improvements Philosophy
 

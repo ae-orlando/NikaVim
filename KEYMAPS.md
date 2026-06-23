@@ -64,6 +64,16 @@
 | `<C-l>` | Jump to next snippet |
 | `<C-h>` | Jump to prev snippet |
 
+## Multi-Cursor (vim-visual-multi)
+| Keybind | Action |
+|---------|--------|
+| `<leader>ma` | Add cursor at word |
+| `<leader>mn` | Add cursor, skip next match |
+| `<leader>mD` | Add cursor below |
+| `<leader>mU` | Add cursor above |
+| `q` | Skip current region (in multi-cursor mode) |
+| `Q` | Remove current region (in multi-cursor mode) |
+
 ## Editing Enhancements
 | Keybind | Action |
 |---------|--------|
@@ -72,6 +82,101 @@
 | `ys<motion><char>` | Surround (surround.nvim) |
 | `cs<old><new>` | Change surrounding |
 | `ds<char>` | Delete surrounding |
+
+## Integrated Terminal (toggleterm.nvim)
+| Keybind | Action |
+|---------|--------|
+| `<leader>tt` | Toggle terminal |
+| `<leader>tF` | Toggle floating terminal |
+| `<leader>th` | Toggle horizontal terminal |
+| `<leader>tv` | Toggle vertical terminal |
+| `<C-\>` | Toggle terminal (normal/terminal mode) |
+| `<Esc>` | Exit terminal mode (terminal buffer) |
+
+## AI Chat (CopilotChat)
+| Keybind | Action |
+|---------|--------|
+| `<leader>ac` | Toggle Copilot Chat panel |
+| `<leader>aq` | Open quick chat prompt |
+| `<leader>aa` | Add selected code to chat |
+| `<leader>ar` | Reset chat session |
+
+## Zen / Focus Mode
+| Keybind | Action |
+|---------|--------|
+| `<leader>zz` | Toggle Zen mode (distraction-free) |
+| `<leader>zt` | Toggle Twilight (dim inactive areas) |
+
+## Session Management
+| Keybind | Action |
+|---------|--------|
+| `<leader>Ss` | Save current session |
+| `<leader>Sl` | Restore last session |
+| `<leader>Sd` | Stop auto-saving session |
+
+## Navigation & Outline
+| Keybind | Action |
+|---------|--------|
+| `<leader>nb` | Toggle Navbuddy (code outline tree) |
+| `<leader>no` | Toggle Navbuddy (alternative) |
+| (breadcrumb) | LSP breadcrumbs in statusline (auto) |
+
+## Tasks (Overseer)
+| Keybind | Action |
+|---------|--------|
+| `<leader>rr` | Run task |
+| `<leader>rb` | Build |
+| `<leader>rt` | Toggle task panel |
+| `<leader>rq` | Quick action on task |
+| `<leader>ro` | Open task output |
+
+## REST Client
+| Keybind | Action |
+|---------|--------|
+| `<leader>Rt` | Run current REST request (`.http` files) |
+| `<leader>Rl` | Re-run last request |
+| `<leader>Rp` | Preview cURL command |
+
+## Database (vim-dadbod)
+| Keybind | Action |
+|---------|--------|
+| `<leader>Dc` | Open DB prompt |
+| `<leader>Dq` | List database tables |
+| `<leader>Du` | Toggle DB UI panel |
+| `<leader>Df` | Find DB buffer |
+
+## Minimap
+| Keybind | Action |
+|---------|--------|
+| `<leader>mm` | Toggle code minimap |
+| `<leader>mM` | Toggle maximized minimap |
+
+## Screencast
+| Keybind | Action |
+|---------|--------|
+| `<leader>kx` | Toggle screenkey (show keystrokes) |
+
+## GitHub (Octo)
+| Keybind | Action |
+|---------|--------|
+| `<leader>gi` | List GitHub issues |
+| `<leader>gpr` | List pull requests |
+| `<leader>gprv` | View pull request |
+| `<leader>gpc` | Checkout PR |
+| `<leader>gpm` | Merge PR |
+
+## Git Graph
+| Keybind | Action |
+|---------|--------|
+| `<leader>gg` | Toggle git commit graph |
+
+## LSP Extras (Code Lens & Call Hierarchy)
+| Keybind | Action |
+|---------|--------|
+| `<leader>Lc` | Run code lens action |
+| `<leader>Lr` | Refresh code lens |
+| `<leader>Li` | Show incoming calls |
+| `<leader>Lo` | Show outgoing calls |
 
 ## Search & Motion
 | Keybind | Action |
@@ -113,13 +218,55 @@
 | `<leader>gl` | Git log |
 | `<leader>gs` | Git status |
 
+## Debugging (DAP)
+| Keybind | Action |
+|---------|--------|
+| `<leader>db` | Toggle breakpoint |
+| `<leader>dB` | Toggle conditional breakpoint |
+| `<leader>dc` | Continue / start debugger |
+| `<leader>di` | Step into |
+| `<leader>do` | Step over |
+| `<leader>dO` | Step out |
+| `<leader>dr` | Restart debug session |
+| `<leader>dq` | Terminate debug session |
+| `<leader>dt` | Toggle DAP UI sidebar |
+
+## Diagnostics & Symbols (Trouble)
+| Keybind | Action |
+|---------|--------|
+| `<leader>xx` | Toggle diagnostics panel (all) |
+| `<leader>xX` | Diagnostics for current buffer |
+| `<leader>xs` | Toggle symbols panel |
+| `<leader>xl` | Loclist |
+| `<leader>xq` | Quickfix list |
+
+## Test Runner (Neotest)
+| Keybind | Action |
+|---------|--------|
+| `<leader>tr` | Run nearest test |
+| `<leader>tf` | Run current test file |
+| `<leader>ta` | Run all tests in project |
+| `<leader>ts` | Toggle test summary |
+| `<leader>to` | Open test output |
+
+## Project Management
+| Keybind | Action |
+|---------|--------|
+| `<leader>pp` | Find and switch projects |
+
+## Copilot (Insert Mode)
+| Keybind | Action |
+|---------|--------|
+| `<M-l>` | Accept suggestion |
+| `<M-]>` | Next suggestion |
+| `<M-[>` | Previous suggestion |
+
 ## Tools & Utilities
 | Keybind | Action |
 |---------|--------|
 | `<leader>l` | Lazy plugin manager |
 | `<leader>m` | Mason package manager |
 | `<leader>u` | Toggle undo tree |
-| `<leader>t` | Open terminal |
 | `<leader>fp` | Format with conform |
 | `<leader>fl` | Lint with nvim-lint |
 

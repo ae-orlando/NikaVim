@@ -58,7 +58,14 @@ Use this file as the map for the rest of the documentation.
 |       |-- telescope.lua
 |       |-- editing.lua
 |       |-- formatting.lua
-|       `-- git.lua
+|       |-- git.lua
+|       |-- whichkey.lua     ← NEW
+|       |-- trouble.lua      ← NEW
+|       |-- debug.lua        ← NEW
+|       |-- markdown.lua     ← NEW
+|       |-- project.lua      ← NEW
+|       |-- copilot.lua      ← NEW
+|       `-- test.lua         ← NEW
 `-- docs and project files
 ```
 
@@ -76,6 +83,13 @@ Use this file as the map for the rest of the documentation.
 | Git | `lua/plugins/git.lua` |
 | Editing helpers | `lua/plugins/editing.lua` |
 | Syntax highlighting | `lua/plugins/treesitter.lua` |
+| Keybinding discovery | `lua/plugins/whichkey.lua` |
+| Diagnostics and symbols | `lua/plugins/trouble.lua` |
+| Debugger | `lua/plugins/debug.lua` |
+| Markdown preview | `lua/plugins/markdown.lua` |
+| Project management | `lua/plugins/project.lua` |
+| Copilot AI | `lua/plugins/copilot.lua` |
+| Test runner | `lua/plugins/test.lua` |
 
 ## Common Commands
 

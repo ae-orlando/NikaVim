@@ -78,6 +78,32 @@ return {
     end,
   },
 
+  -- Multi-cursor (VS Code Ctrl+D / Alt+Click equivalent)
+  {
+    "mg979/vim-visual-multi",
+    branch = "master",
+    keys = {
+      { "<leader>ma", mode = { "n", "x" }, desc = "Add cursor at word" },
+      { "<leader>mn", mode = { "n", "x" }, desc = "Add cursor (skip next)" },
+      { "<leader>mD", mode = { "n", "x" }, desc = "Add cursor down" },
+      { "<leader>mU", mode = { "n", "x" }, desc = "Add cursor up" },
+    },
+    config = function()
+      vim.g.VM_theme = "default"
+      vim.g.VM_highlight_matches = "underline"
+      vim.g.VM_maps = {
+        ["Add Cursor Down"] = "<leader>mD",
+        ["Add Cursor Up"] = "<leader>mU",
+        ["Select Cursor Down"] = "<M-C-Down>",
+        ["Select Cursor Up"] = "<M-C-Up>",
+        ["Visual Cursors"] = "<leader>ma",
+        ["Visual Add"] = "<leader>mn",
+        ["Skip Region"] = "q",
+        ["Remove Region"] = "Q",
+      }
+    end,
+  },
+
   -- Smart text objects
   {
     "echasnovski/mini.ai",

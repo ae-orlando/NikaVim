@@ -69,4 +69,35 @@ return {
       { "<leader>gs", ":Git status<CR>", desc = "Git status" },
     },
   },
+
+  -- Git commit graph (VS Code Git Graph equivalent)
+  {
+    "isakbm/gitgraph.nvim",
+    cmd = { "GitGraph" },
+    keys = {
+      { "<leader>gg", "<cmd>GitGraph<CR>", desc = "Toggle git graph" },
+    },
+    config = function()
+      require("gitgraph").setup({
+        icons = {
+          todo = "",
+          done = "",
+          busy = "",
+          failed = "",
+          aura = "",
+        },
+        format = {
+          timestamp = "%Y-%m-%d %H:%M",
+          fields = { "author", "timestamp", "hash" },
+        },
+        win = {
+          row = 4,
+          col = 0,
+          width = 120,
+          height = 30,
+          border = "rounded",
+        },
+      })
+    end,
+  },
 }

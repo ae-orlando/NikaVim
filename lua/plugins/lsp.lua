@@ -33,6 +33,17 @@ return {
           vim.keymap.set("n", "<F2>", vim.lsp.buf.rename, opts)
           vim.keymap.set({ "n", "x" }, "<F3>", vim.lsp.buf.format, opts)
           vim.keymap.set("n", "<F4>", vim.lsp.buf.code_action, opts)
+
+          vim.lsp.inlay_hint.enable(true, { bufnr = event.buf })
+
+          -- Code Lens
+          vim.lsp.codelens.refresh()
+          vim.keymap.set("n", "<leader>Lc", vim.lsp.codelens.run, vim.tbl_extend("force", opts, { desc = "Run code lens" }))
+          vim.keymap.set("n", "<leader>Lr", vim.lsp.codelens.refresh, vim.tbl_extend("force", opts, { desc = "Refresh code lens" }))
+
+          -- Call hierarchy
+          vim.keymap.set("n", "<leader>Li", vim.lsp.buf.incoming_calls, vim.tbl_extend("force", opts, { desc = "Incoming calls" }))
+          vim.keymap.set("n", "<leader>Lo", vim.lsp.buf.outgoing_calls, vim.tbl_extend("force", opts, { desc = "Outgoing calls" }))
         end,
       })
     end,

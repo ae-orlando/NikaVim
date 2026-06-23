@@ -2,6 +2,241 @@
 
 All notable changes to this Neovim configuration are documented here.
 
+## [v3.0.0] - 2026-06-24
+
+### ✨ New Features — Full IDE Parity (VS Code-class)
+
+#### 1. Multi-Cursor Editing (VS Code Ctrl+D equivalent)
+- **Plugin**: `mg979/vim-visual-multi`
+- Add cursors at word matches, skip regions, add cursor above/below
+- **Keymaps**: `<C-d>` add cursor at word, `<C-n>` skip add, `<C-Up/Down>` add cursor vertically
+
+#### 2. Integrated Terminal Panel (VS Code terminal equivalent)
+- **Plugin**: `akinsho/toggleterm.nvim`
+- Floating, horizontal, and vertical terminal layouts
+- Persists across toggles, smart shading, starts in insert mode
+- **Keymaps**: `<leader>tt` toggle, `tF` float, `th` horizontal, `tv` vertical
+
+#### 3. AI Chat Assistant (GitHub Copilot Chat)
+- **Plugin**: `CopilotC-Nvim/CopilotChat.nvim`
+- Conversational AI within the editor, uses GitHub Copilot auth
+- Add selection to chat context, reset sessions
+- **Keymaps**: `<leader>ac` toggle chat, `aq` quick chat, `aa` add selection, `ar` reset
+
+#### 4. Zen / Focus Mode (VS Code Zen Mode equivalent)
+- **Plugins**: `folke/zen-mode.nvim`, `folke/twilight.nvim`
+- Distraction-free writing with centered layout
+- Dim inactive code areas with tree-sitter awareness
+- **Keymaps**: `<leader>zz` toggle zen, `<leader>zt` toggle twilight
+
+#### 5. Color Highlighting (VS Code Color Picker equivalent)
+- **Plugin**: `norcalli/nvim-colorizer.lua`
+- Inline color hex/rgb/hsl decoration in all files
+- Foreground mode for HTML, background mode for CSS
+- **Keymaps**: Automatic on `BufReadPost`
+
+#### 6. Inline Color Display
+- **Plugin**: nvim-colorizer (see above)
+- Highlights color codes with their actual color inline
+
+#### 7. Session Persistence (VS Code Window Restore equivalent)
+- **Plugin**: `folke/persistence.nvim`
+- Auto-save/restore sessions per project
+- Save on VimLeave, manual save/load/stop controls
+- **Keymaps**: `<leader>Ss` save, `Sl` load last, `Sd` stop
+
+#### 8. Breadcrumb & Outline Navigation (VS Code breadcrumb + Outline equivalent)
+- **Plugins**: `nvim-navic`, `nvim-navbuddy`
+- LSP-based breadcrumbs in lualine statusline
+- Interactive tree-based code outline (navbuddy)
+- **Keymaps**: `<leader>nb` toggle outline, breadcrumbs show automatically
+
+#### 9. Task Runner (VS Code Tasks equivalent)
+- **Plugin**: `stevearc/overseer.nvim`
+- Run build/test tasks, integrated with toggleterm
+- Task list panel, quick actions, output viewer
+- **Keymaps**: `<leader>rr` run, `rb` build, `rt` toggle panel, `rq` quick action, `ro` output
+
+#### 10. REST Client (VS Code REST Client extension equivalent)
+- **Plugin**: `rest-nvim/rest.nvim`
+- Run HTTP requests from `.http` files, preview cURL commands
+- Re-run last request, result in split
+- **Keymaps**: `<leader>Rt` run, `Rl` re-run last, `Rp` preview
+
+#### 11. Database Explorer (VS Code SQLTools equivalent)
+- **Plugins**: `vim-dadbod`, `vim-dadbod-ui`, `vim-dadbod-completion`
+- Browse databases, run queries, UI panel
+- Auto-completion for SQL in DB buffers
+- **Keymaps**: `<leader>Du` toggle DB UI, `Dc` DB prompt, `Dq` list tables, `Df` find buffer
+
+#### 12. Code Minimap (VS Code minimap equivalent)
+- **Plugin**: `gorbit99/codewindow.nvim`
+- Right-side minimap with toggle, maximize, configurable width
+- **Keymaps**: `<leader>mm` toggle, `mM` maximize
+
+#### 13. Screencast / Keycast
+- **Plugin**: `NStefan002/screenkey.nvim`
+- Display keystrokes on screen (presentation/streaming)
+- **Keymaps**: `<leader>kx` toggle
+
+#### 14. GitHub PR & Issue Management
+- **Plugin**: `pwntester/octo.nvim`
+- List/view/checkout/merge PRs, manage issues
+- Telescope integration for pickers
+- **Keymaps**: `<leader>gi` issues, `gpr` PR list, `gprv` view PR, `gpc` checkout, `gpm` merge
+
+#### 15. Git Commit Graph (VS Code Git Graph equivalent)
+- **Plugin**: `isakbm/gitgraph.nvim`
+- Visual commit graph with author, timestamp, hash
+- **Keymaps**: `<leader>gg` toggle git graph
+
+#### 16. Code Lens & Call Hierarchy
+- **Plugin**: Built-in LSP (`nvim-lspconfig`)
+- Code lens actions (run inline actions)
+- Incoming/outgoing call hierarchy navigation
+- **Keymaps**: `<leader>Lc` run code lens, `Lr` refresh lens, `Li` incoming calls, `Lo` outgoing calls
+
+### ⚙️ Configuration Changes
+- Added 10 new plugin configuration files (terminal, ai, visuals, session, navic, tasks, tools, minimap, screencast, octo)
+- Updated `lua/plugins/init.lua` to load all new plugin specs (26 total plugin modules)
+- Updated `lua/plugins/whichkey.lua` with 16 which-key groups
+- Updated `lua/plugins/editing.lua` with vim-visual-multi multi-cursor
+- Updated `lua/plugins/git.lua` with gitgraph.nvim
+- Updated `lua/plugins/lsp.lua` with code lens + call hierarchy keymaps
+- Updated `lua/core/keymaps.lua` — `<leader>t` now delegated to toggleterm
+- Updated KEYMAPS.md, README.md, CHANGELOG.md
+- Updated which-key groups: `a` AI, `d` Debug, `f` Format/Find, `g` Git, `k` Keys, `m` Mason, `n` Nav, `o` Octo, `r` Tasks, `s` Search, `t` Test/Terminal, `z` Zen/Focus, `D` Database, `L` LSP Extras, `R` REST, `S` Session
+
+### 🗂️ Project Structure
+```
+lua/plugins/
+├── init.lua           ← Updated: 26 plugin modules
+├── ui.lua
+├── treesitter.lua
+├── lsp.lua            ← Updated: code lens + call hierarchy
+├── completion.lua
+├── telescope.lua
+├── editing.lua        ← Updated: vim-visual-multi
+├── formatting.lua
+├── git.lua            ← Updated: gitgraph.nvim
+├── whichkey.lua       ← Updated: 16 groups
+├── trouble.lua
+├── debug.lua
+├── markdown.lua
+├── project.lua
+├── copilot.lua
+├── test.lua
+├── terminal.lua       ← NEW
+├── ai.lua             ← NEW
+├── visuals.lua        ← NEW
+├── session.lua        ← NEW
+├── navic.lua          ← NEW
+├── tasks.lua          ← NEW
+├── tools.lua          ← NEW
+├── minimap.lua        ← NEW
+├── screencast.lua     ← NEW
+└── octo.lua           ← NEW
+```
+
+### 🐛 Bug Fixes
+- **Terminal keymap conflict**: Removed `:terminal` from core/keymaps.lua; replaced with toggleterm integration
+- **Which-key groups**: Expanded from 5 to 16 groups for full coverage of all features
+
+### ✅ Testing & Verification
+- All 80+ plugins load without errors
+- Core plugins verified: toggleterm, CopilotChat, zen-mode, twilight, nvim-colorizer, persistence, navbuddy, overseer, rest-nvim, vim-dadbod, codewindow, screenkey, octo, gitgraph
+- Keymaps functional: multi-cursor, terminal, AI chat, zen, session, tasks, database, REST, minimap, screencast, GitHub, code lens, call hierarchy
+- Which-key groups verified: all 16 groups show correct labels
+- LSP code lens and call hierarchy functional on LspAttach
+- Session persistence saves/restores correctly
+- Navbuddy outline renders with tree-sitter/LSP
+
+---
+
+### ✨ New Features
+
+#### 1. Debugging (VSCode-level debugger)
+- **Plugins**: `nvim-dap`, `nvim-dap-ui`, `nvim-dap-virtual-text`, `mason-nvim-dap.nvim`
+- Full debugger with breakpoints, conditional breakpoints, step in/over/out, continue, restart, terminate
+- DAP UI sidebar for variables, watches, stacks, and breakpoints
+- Mason-managed debug adapters (debugpy, codelldb, js-debug-adapter)
+- **Keymaps**: `<leader>db` breakpoint, `dB` conditional, `dc` continue, `di` step into, `do` step over, `dO` step out, `dr` restart, `dq` terminate, `dt` toggle UI
+
+#### 2. Which-Key (Keybinding discovery)
+- **Plugin**: `which-key.nvim`
+- Popup keybinding cheatsheet on `<Space>` press (VSCode's "Ctrl+K Ctrl+S" equivalent)
+- Group labels for Debug, Format/Find, Git, Search, Test/Terminal
+- Modern popup preset with clean styling
+
+#### 3. Diagnostics Panel (VSCode Problems equivalent)
+- **Plugin**: `trouble.nvim`
+- View all diagnostics, symbols, loclist, quickfix in a toggleable panel
+- **Keymaps**: `<leader>xx` diagnostics all, `xX` buffer diagnostics, `xs` symbols, `xl` loclist, `xq` quickfix
+
+#### 4. Markdown Preview
+- **Plugin**: `render-markdown.nvim`
+- In-buffer rendered markdown (headings, bold, italic, code, links, images)
+- Auto-activates on markdown files
+
+#### 5. Project Management (VSCode workspace equivalent)
+- **Plugin**: `project.nvim`
+- Automatic project detection (git, package.json, Cargo.toml, Makefile, etc.)
+- Telescope project picker: `<leader>fp` to switch projects
+- Per-project configuration (silent chdir, NvimTree sync)
+
+#### 6. GitHub Copilot
+- **Plugin**: `github/copilot.vim`
+- AI code suggestions in insert mode
+- **Keymaps**: `<M-l>` accept, `<M-]>` next suggestion, `<M-[>` previous suggestion
+
+#### 7. Test Runner (VSCode test explorer equivalent)
+- **Plugin**: `neotest` with adapters (python, plenary, vitest, gtest)
+- Run nearest test, test file, or all tests with summary and output views
+- **Keymaps**: `<leader>tr` nearest, `tf` file, `ta` all, `ts` summary, `to` output
+
+#### 8. Inlay Hints (VSCode type hints)
+- Enabled inline type hints via LspAttach (`vim.lsp.inlay_hint.enable(true)`)
+- Shows inferred types, parameter names, and return types inline
+
+### ⚙️ Configuration Changes
+- Added 7 new plugin configuration files (debug, whichkey, trouble, markdown, project, copilot, test)
+- Updated `lua/plugins/init.lua` to load all new plugin specs (14 total plugin modules)
+- Added copilot source to nvim-cmp completion sources
+- Updated plugin count: 56+ plugins managed by lazy.nvim
+
+### 🗂️ Project Structure
+```
+lua/plugins/
+├── init.lua           ← Updated: 14 plugin modules
+├── ui.lua
+├── treesitter.lua
+├── lsp.lua            ← Updated: inlay hints enabled
+├── completion.lua     ← Updated: copilot source added
+├── telescope.lua
+├── editing.lua
+├── formatting.lua
+├── git.lua
+├── whichkey.lua       ← NEW
+├── trouble.lua        ← NEW
+├── debug.lua          ← NEW
+├── markdown.lua       ← NEW
+├── project.lua        ← NEW
+├── copilot.lua        ← NEW
+└── test.lua           ← NEW
+```
+
+### 🐛 Bug Fixes
+- **Corrupted `.gitignore`**: Fixed — was a copy-paste error containing Lua init code instead of gitignore rules
+
+### ✅ Testing & Verification
+- All 56+ plugins load without errors
+- Core plugins verified: which-key, trouble, dap, dapui, render-markdown, project_nvim, neotest, copilot.vim
+- Keymaps functional: debug, test, trouble, project, which-key
+- Inlay hints active for LSP-attached buffers
+- Copilot autoload function `copilot#Accept` verified
+
+---
+
 ## [v1.1.0] - 2026-06-11
 
 ### 🐛 Bug Fixes

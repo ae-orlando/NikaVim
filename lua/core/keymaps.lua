@@ -98,10 +98,11 @@ map("n", "<leader>l", ":Lazy<CR>", { desc = "Lazy plugin manager" })
 map("n", "<leader>m", ":Mason<CR>", { desc = "Mason package manager" })
 
 -- ============================================
--- Terminal
+-- Terminal (now managed by toggleterm.nvim)
+-- See lua/plugins/terminal.lua
 -- ============================================
-map("n", "<leader>t", ":terminal<CR>", { desc = "Open terminal" })
-map("t", "<Esc>", "<C-\\><C-n>", { desc = "Exit terminal" })
+-- Legacy mapping removed; use <leader>tt / <C-\\> instead
+map("t", "<Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
 
 -- ============================================
 -- Better visuals for redo/undo
