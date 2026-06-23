@@ -167,6 +167,7 @@ return {
       })
       set_dashboard_highlights()
 
+      -- ASCII art logo
       local header_art = {
         "███╗   ██╗██╗██╗  ██╗ █████╗ ██╗   ██╗██╗███╗   ███╗",
         "████╗  ██║██║██║ ██╔╝██╔══██╗██║   ██║██║████╗ ████║",
@@ -189,13 +190,68 @@ return {
         return string.rep(" ", left) .. text .. string.rep(" ", right)
       end
 
+      -- Separator matching the logo width
+      local separator = string.rep("─", math.floor(header_width / 2))
+
       local dashboard_header = { "" }
       vim.list_extend(dashboard_header, header_art)
       vim.list_extend(dashboard_header, {
         "",
-        center_in_header("Fast tools. Clean motion. Your editor, sharpened."),
+        center_in_header("Blazing-fast Neovim. Infinite possibilities."),
+        center_in_header(separator),
         "",
       })
+
+      -- Random tip of the day
+      local tips = {
+        "Press  <Space>  to discover all available keybindings",
+        "Search files instantly:  <Space>f f",
+        "Search across files:     <Space>f g",
+        "Toggle file explorer:    <C-n>",
+        "Open terminal:           <Space>t t",
+        "Chat with AI:            <Space>a c",
+        "Distraction-free coding: <Space>z z",
+        "Toggle breakpoint:       <Space>d b",
+        "Run nearest test:        <Space>t r",
+        "Restore last session:    <Space>S l",
+        "Switch projects:         <Space>p p",
+        "Go to definition:        g d",
+        "Hover documentation:     K",
+        "Rename symbol:           <F2>",
+        "Format code:             <F3>",
+        "Code actions:            <F4>",
+        "Toggle diagnostics:      <Space>x x",
+        "View git log:            <Space>g l",
+        "Install tools:           :Mason",
+        "Manage plugins:          :Lazy",
+        "Multi-cursor add word:   <Space>m a",
+        "Toggle minimap:          <Space>m m",
+        "List GitHub issues:      <Space>g i",
+        "Show git commit graph:   <Space>g g",
+        "Save session:            <Space>S s",
+      }
+      local tip = tips[math.random(#tips)]
+
+      -- Greeting based on time of day
+      local function greeting()
+        local hour = tonumber(os.date("%H"))
+        if hour < 12 then
+          return "Good morning"
+        elseif hour < 18 then
+          return "Good afternoon"
+        else
+          return "Good evening"
+        end
+      end
+
+      -- Detect git branch (non-blocking, runs once)
+      local git_branch = ""
+      local git_ok = pcall(function()
+        local branch = vim.fn.system("git rev-parse --abbrev-ref HEAD 2>/dev/null")
+        if vim.v.shell_error == 0 and branch ~= "" then
+          git_branch = "   " .. vim.trim(branch)
+        end
+      end)
 
       require("dashboard").setup({
         theme = "doom",
@@ -258,6 +314,17 @@ return {
               action = "NvimTreeToggle",
             },
             {
+              icon = "  ",
+              icon_hl = "Title",
+              desc = "Terminal          ",
+              desc_hl = "String",
+              key = "t",
+              key_hl = "Number",
+              key_format = " %s",
+              keymap = "SPC t t",
+              action = "ToggleTerm",
+            },
+            {
               icon = "  ",
               icon_hl = "Title",
               desc = "New file          ",
@@ -268,14 +335,36 @@ return {
               action = "ene | startinsert",
             },
             {
+              icon = "  ",
+              icon_hl = "Title",
+              desc = "Restore session   ",
+              desc_hl = "String",
+              key = "s",
+              key_hl = "Number",
+              key_format = " %s",
+              keymap = "SPC S l",
+              action = "lua require('persistence').load()",
+            },
+            {
+              icon = "󰆧  ",
+              icon_hl = "Title",
+              desc = "Switch project    ",
+              desc_hl = "String",
+              key = "p",
+              key_hl = "Number",
+              key_format = " %s",
+              keymap = "SPC p p",
+              action = "Telescope projects",
+            },
+            {
               icon = "  ",
               icon_hl = "Title",
-              desc = "Edit config       ",
+              desc = "Browse config     ",
               desc_hl = "String",
               key = "c",
               key_hl = "Number",
               key_format = " %s",
-              action = "edit $MYVIMRC",
+              action = "lua require('nvim-tree.api').tree.open({path = vim.fn.stdpath('config')})",
             },
             {
               icon = "󰒲  ",
@@ -322,14 +411,17 @@ return {
               local loaded = stats.loaded or 0
               local count = stats.count or 0
               local startup_ms = stats.startuptime or 0
-              stats_text = string.format("Loaded %d/%d plugins in %.2fms", loaded, count, startup_ms)
+              stats_text = string.format("Loaded %d/%d plugins in %.0fms", loaded, count, startup_ms)
             end
+
+            local time_text = os.date("%I:%M %p"):gsub("^0", "")
 
             return {
               "",
-              "NikaVim • " .. version_text,
-              stats_text,
-              "Vim motions. Infinite possibilities.",
+              greeting() .. " and welcome to NikaVim!" .. git_branch,
+              version_text .. "  •  " .. stats_text .. "  •  " .. time_text,
+              "",
+              tip,
             }
           end,
           vertical_center = true,
