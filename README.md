@@ -90,7 +90,7 @@
 | Minimap | codewindow.nvim | `<Space>mm` |
 | Smooth scroll | cinnamon.nvim | (automatic) |
 | Indent guides | indent-blankline.nvim | (automatic) |
-| Notifications | nvim-notify + noice.nvim | (toasts + LSP progress) |
+| Notifications | nvim-notify | (toast notifications) |
 | Screencast | screenkey.nvim | `<Space>kx` |
 
 ### ✏️ Editing
@@ -191,7 +191,7 @@ nvim --headless +MasonInstall\ lua_ls\ pyright\ ts_ls\ html\ cssls\ jsonls\ yaml
 │       ├── octo.lua         # GitHub PRs/issues
 │       ├── flash.lua        # Flash navigation
 │       ├── todo.lua         # TODO/FIXME highlighting
-│       ├── notify.lua       # nvim-notify + noice.nvim
+│       ├── notify.lua       # nvim-notify
 │       └── harpoon.lua      # File bookmarks
 ├── README.md
 ├── KEYMAPS.md

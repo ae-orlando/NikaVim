@@ -110,7 +110,7 @@ return {
 |---------|------------------|----------|
 | `event = "BufReadPre"` | Before file opens | Git signs, LSP |
 | `event = "InsertEnter"` | When entering insert mode | Auto-pairs, completion |
-| `event = "VeryLazy"` | After UI starts | Which-key, noice |
+| `event = "VeryLazy"` | After UI starts | Which-key, notify |
 | `cmd = "CommandName"` | When the command is used | Fugitive, Mason |
 | `keys = { { "<leader>xx" } }` | When the key is pressed | Harpoon, debugger |
 | `lazy = false` | At startup | Theme, essential |

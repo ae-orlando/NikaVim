@@ -2,11 +2,16 @@
 
 All notable changes to this Neovim configuration are documented here.
 
+## [v3.1.2] - 2026-06-24
+
+### 🐛 Bug Fixes
+- **Cmdline**: Removed noice.nvim entirely — even with cmdline disabled, it still intercepted the cmdline and made typed text invisible
+- **Docs**: Removed all noice.nvim references from README
+
 ## [v3.1.1] - 2026-06-24
 
 ### 🐛 Bug Fixes
 - **Dashboard**: Auto-wipe on :Man and other commands; skip entirely when files pre-loaded at startup
-- **Cmdline**: Reconfigured noice.nvim with cmdline disabled to restore native cmdline display while keeping LSP progress and notification benefits
 - **project.nvim**: Fixed nil rhs on `<leader>pp` by wrapping in lazy function
 - **cinnamon.nvim**: Updated deprecated options to new nested API
 - **CopilotChat**: Disabled help panel to prevent clipboard read errors
