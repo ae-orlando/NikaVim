@@ -19,6 +19,13 @@ __pycache__/
 # Rust
 target/
 
+# Agent / IDE tooling
+.agents/
+.opencode/
+AGENTS.md
+opencode.json
+skills-lock.json
+
 # Other
 *.swp
 *.swo
