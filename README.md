@@ -12,9 +12,9 @@
 <p align="center">
   <img src="https://img.shields.io/badge/neovim-%3E%3D0.10-57A143?logo=neovim&style=flat-square"
        alt="Neovim >= 0.10">
-  <img src="https://img.shields.io/github/v/release/ae-orlando/nvim?style=flat-square&label=release"
+  <img src="https://img.shields.io/github/v/release/ae-orlando/NikaVim?style=flat-square&label=release"
        alt="Release v3.1.2">
-  <img src="https://img.shields.io/github/last-commit/ae-orlando/nvim?style=flat-square&label=last%20commit"
+  <img src="https://img.shields.io/github/last-commit/ae-orlando/NikaVim?style=flat-square&label=last%20commit"
        alt="Last Commit">
   <img src="https://img.shields.io/badge/license-MIT-blue?style=flat-square"
        alt="License MIT">
@@ -23,13 +23,13 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/github/stars/ae-orlando/nvim?style=flat-square&logo=github&label=stars"
+  <img src="https://img.shields.io/github/stars/ae-orlando/NikaVim?style=flat-square&logo=github&label=stars"
        alt="Stars">
-  <img src="https://img.shields.io/github/forks/ae-orlando/nvim?style=flat-square&logo=github&label=forks"
+  <img src="https://img.shields.io/github/forks/ae-orlando/NikaVim?style=flat-square&logo=github&label=forks"
        alt="Forks">
-  <img src="https://img.shields.io/github/issues/ae-orlando/nvim?style=flat-square&logo=github&label=issues"
+  <img src="https://img.shields.io/github/issues/ae-orlando/NikaVim?style=flat-square&logo=github&label=issues"
        alt="Issues">
-  <img src="https://img.shields.io/github/contributors/ae-orlando/nvim?style=flat-square&logo=github&label=contributors"
+  <img src="https://img.shields.io/github/contributors/ae-orlando/NikaVim?style=flat-square&logo=github&label=contributors"
        alt="Contributors">
   <img src="https://img.shields.io/badge/PRs-welcome-brightgreen?style=flat-square"
        alt="PRs welcome">
