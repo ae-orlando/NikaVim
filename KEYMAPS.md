@@ -170,6 +170,37 @@
 |---------|--------|
 | `<leader>gg` | Toggle git commit graph |
 
+## Flash Navigation (jump to any visible character)
+| Keybind | Action |
+|---------|--------|
+| `s` | Flash forward — then type the target label |
+| `S` | Flash backward |
+
+## Todo Comments
+| Keybind | Action |
+|---------|--------|
+| `]t` | Jump to next TODO/FIXME/HACK comment |
+| `[t` | Jump to previous TODO/FIXME/HACK |
+| `<leader>xt` | Show all todos in Trouble panel |
+| `<leader>xT` | Show only TODO/FIXME in Trouble |
+| `<leader>st` | List todos in Telescope |
+
+## Quick File Bookmarks (Harpoon)
+| Keybind | Action |
+|---------|--------|
+| `<leader>ha` | Add current file to Harpoon |
+| `<leader>hh` | Open Harpoon quick menu |
+| `<leader>h1` | Jump to Harpoon file 1 |
+| `<leader>h2` | Jump to Harpoon file 2 |
+| `<leader>h3` | Jump to Harpoon file 3 |
+| `<leader>h4` | Jump to Harpoon file 4 |
+| `<leader>h5` | Jump to Harpoon file 5 |
+
+## Rename with Preview
+| Keybind | Action |
+|---------|--------|
+| `<leader>rn` | Rename symbol (with inline diff preview) |
+
 ## LSP Extras (Code Lens & Call Hierarchy)
 | Keybind | Action |
 |---------|--------|

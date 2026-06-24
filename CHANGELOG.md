@@ -153,6 +153,60 @@ lua/plugins/
 
 ---
 
+## [v3.1.0] - 2026-06-24
+
+### ✨ New Features — Final Polish for IDE Parity
+
+#### 1. Flash Navigation (Easy Motion)
+- **Plugin**: `folke/flash.nvim`
+- Jump to any visible character with 2 keystrokes — `s` forward, `S` backward
+- Rainbow-colored labels, enhanced `f`/`F`/`t`/`T` motions
+
+#### 2. Todo Comment Highlighting
+- **Plugin**: `folke/todo-comments.nvim`
+- Color-coded `TODO`, `FIXME`, `HACK`, `WARN`, `PERF`, `NOTE` markers
+- Sign gutter indicators, Telescope/Trouble integration
+- **Keymaps**: `]t`/`[t` jump, `<leader>xt` list in Trouble, `<leader>st` list in Telescope
+
+#### 3. Notification System & Modern Cmdline
+- **Plugins**: `rcarriga/nvim-notify`, `folke/noice.nvim`
+- Toast notifications replace raw `print()` messages
+- Modern popup cmdline with history, icons, and syntax highlighting
+- LSP progress, hover, and signature in styled popups
+
+#### 4. Quick File Bookmarks (Harpoon)
+- **Plugin**: `ThePrimeagen/harpoon` (v2)
+- Pin frequently-used files for instant switching
+- **Keymaps**: `<leader>ha` add, `hh` menu, `h1`-`h5` jump to slot
+
+#### 5. Inline Rename Preview
+- **Plugin**: `smjonas/inc-rename.nvim`
+- See the rename diff before confirming (VS Code style)
+- **Keymaps**: `<leader>rn` triggered rename with preview
+
+#### 6. Smooth Scrolling
+- **Plugin**: `declancm/cinnamon.nvim`
+- Pixel-based smooth animation for `C-d`/`C-u`, `C-f`/`C-b`, `G`, `gg`
+
+### ⚙️ Configuration Changes
+- Added 4 new plugin files: `flash.lua`, `todo.lua`, `notify.lua`, `harpoon.lua`
+- Updated `init.lua` to register 4 new modules (30 total plugin modules)
+- Updated `lsp.lua` with `inc-rename.nvim` for rename preview
+- Updated `ui.lua` with `cinnamon.nvim` for smooth scrolling
+- Updated `whichkey.lua` with Harpoon group
+- Updated KEYMAPS.md, README.md, CHANGELOG.md
+
+### ✅ Testing & Verification
+- All 30 plugin modules load without errors
+- Flash navigation functional (s / S modes)
+- Todo comments highlight keywords in all filetypes
+- Notify/noice replace default cmdline and messages
+- Harpoon tracks files and quick-selects via menu/slots
+- inc-rename shows inline preview on rename
+- Cinnamon smooth scrolling active for all scroll commands
+
+---
+
 ### ✨ New Features
 
 #### 1. Debugging (VSCode-level debugger)

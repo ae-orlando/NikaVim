@@ -13,6 +13,7 @@ return {
           { "<leader>d", group = "Debug" },
           { "<leader>f", group = "Format / Find" },
           { "<leader>g", group = "Git" },
+          { "<leader>h", group = "Harpoon" },
           { "<leader>k", group = "Keys (screencast)" },
           { "<leader>m", group = "Mason" },
           { "<leader>n", group = "Nav" },

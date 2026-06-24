@@ -139,6 +139,23 @@ return {
     end,
   },
 
+  -- Smooth scrolling (pixel-based animated C-d/C-u, C-f/C-b)
+  {
+    "declancm/cinnamon.nvim",
+    event = "VeryLazy",
+    config = function()
+      require("cinnamon").setup({
+        always_scroll = true,
+        max_delta = 60,
+        scroll_limit = 60,
+        centralize_scrollbar = true,
+        keymaps = {
+          -- Use defaults: C-d, C-u, C-f, C-b, C-y, C-e, G, gg, etc.
+        },
+      })
+    end,
+  },
+
   -- Dashboard/startup screen
   {
     "nvimdev/dashboard-nvim",

@@ -103,6 +103,27 @@ return {
     end,
   },
 
+  -- Inline rename preview (VS Code-style rename with diff preview)
+  {
+    "smjonas/inc-rename.nvim",
+    cmd = "IncRename",
+    keys = {
+      { "<leader>rn", ":IncRename ", desc = "Rename symbol (preview)" },
+    },
+    config = function()
+      require("inc_rename").setup({
+        cmd_name = "IncRename",
+        input_buffer_type = "prompt",
+        preview_win_highlight = "IncRenamePreview",
+        show_message = true,
+        highlight_alternatives = true,
+      })
+
+      -- Highlight group for the rename preview
+      vim.api.nvim_set_hl(0, "IncRenamePreview", { link = "DiffAdd", default = true })
+    end,
+  },
+
   -- Better diagnostics display
   {
     "https://git.sr.ht/~whynothugo/lsp_lines.nvim",

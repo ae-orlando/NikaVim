@@ -27,4 +27,8 @@ return {
   require("plugins.minimap"),
   require("plugins.screencast"),
   require("plugins.octo"),
+  require("plugins.flash"),
+  require("plugins.todo"),
+  require("plugins.notify"),
+  require("plugins.harpoon"),
 }

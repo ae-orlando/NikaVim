@@ -37,6 +37,12 @@ NikaVim is a modular Neovim distribution for everyday development. It keeps the 
 - **GitHub PR & Issue manager** — manage PRs, issues, and reviews with Octo.
 - **Color highlighting** — inline color hex/rgb decoration.
 - **Incremental selection** — tree-sitter aware text object selection.
+- **Flash navigation** — jump to any visible character in 2 keystrokes.
+- **Todo comment highlighting** — colorful TODO/FIXME/HACK/NOTE markers with Telescope/Trouble integration.
+- **Notification system** — toast notifications + modern cmdline popup.
+- **Quick file bookmarks** — Harpoon for instant file switching.
+- **Smooth scrolling** — pixel-based animated scrolling.
+- **Inline rename preview** — see the diff before confirming a rename.
 ---
 
 ## 🚀 Installation
@@ -192,6 +198,8 @@ The leader key is `<Space>`.
 | `<Space>zz` | Toggle Zen mode |
 | `<M-l>` | Accept Copilot suggestion |
 | `<Space>ma` | Multi-cursor add word |
+| `<Space>hh` | Harpoon file bookmarks |
+| `s` | Flash jump to any character |
 
 See [KEYMAPS.md](./KEYMAPS.md) for the full reference.
 
