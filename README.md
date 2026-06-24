@@ -1,217 +1,256 @@
-# 🛸NikaVim
+# 🛸 NikaVim
+
 <p align="center">
-  <img src="images/header.png" alt="NikaVim Header">
+  <img src="images/header.png" alt="NikaVim Header" width="600">
 </p>
 
-NikaVim is a modular Neovim distribution for everyday development. It keeps the entry point small, organizes features by concern, and ships with LSP, completion, formatting, search, Git tools, and a polished startup dashboard.
+<p align="center">
+  <strong>A blazing-fast, modular Neovim distribution for everyday development.</strong><br>
+  39 features · 30 plugin modules · 16 ms startup · Full IDE
+</p>
 
-## Features
+<p align="center">
+  <img src="images/maindashboard.png" alt="NikaVim Dashboard" width="700">
+</p>
 
-- Plugin management with Lazy.nvim.
-- Language servers, formatters, and linters managed through Mason.
-- LSP navigation, hover, rename, formatting, diagnostics, code actions, **inlay hints**, **code lens**, and **call hierarchy**.
-- Completion with nvim-cmp, LuaSnip, and friendly snippets (with Copilot integration).
-- Tree-sitter highlighting, text objects, and incremental selection.
-- Telescope file search, text search, buffers, help tags, commands, and recent files.
-- Git integration with Gitsigns, vim-fugitive, and **git commit graph**.
-- Formatting with conform.nvim and linting with nvim-lint.
-- UI polish with Tokyo Night, Lualine, Bufferline, NvimTree, Dressing, indent guides, and the NikaVim dashboard.
-- Editing helpers for comments, autopairs, surround operations, match navigation, refactoring, undo history, and **multi-cursor**.
-- **Which-key** popup for discovering keybindings (`<Space>`).
-- **Trouble** diagnostics panel — view all warnings/errors and symbols.
-- **Debugger** — breakpoints, stepping, variable inspection, conditional breakpoints.
-- **Test runner** — run nearest, file-level, or all tests with summary and output.
-- **Markdown preview** — in-buffer rendered markdown.
-- **Project management** — auto-detect projects, switch via Telescope.
-- **GitHub Copilot** — AI code suggestions in insert mode + **Copilot Chat** for conversational AI.
-- **Inlay hints** — inline type hints from LSP (VS Code-style).
-- **Integrated terminal** — floating, horizontal, and vertical terminal layouts via toggleterm.
-- **Zen / Focus mode** — distraction-free writing with Zen Mode and Twilight.
-- **Session persistence** — auto-save/restore sessions across restarts.
-- **Breadcrumb & Outline** — LSP-based breadcrumbs in statusline + interactive code outline tree.
-- **Task runner** — build, test, and custom tasks with Overseer.
-- **REST client** — run HTTP requests from `.http` files.
-- **Database explorer** — browse databases, run queries with vim-dadbod + UI.
-- **Code minimap** — right-side minimap scrollbar.
-- **Screencast** — show keystrokes on screen for presentations.
-- **GitHub PR & Issue manager** — manage PRs, issues, and reviews with Octo.
-- **Color highlighting** — inline color hex/rgb decoration.
-- **Incremental selection** — tree-sitter aware text object selection.
-- **Flash navigation** — jump to any visible character in 2 keystrokes.
-- **Todo comment highlighting** — colorful TODO/FIXME/HACK/NOTE markers with Telescope/Trouble integration.
-- **Notification system** — toast notifications + modern cmdline popup.
-- **Quick file bookmarks** — Harpoon for instant file switching.
-- **Smooth scrolling** — pixel-based animated scrolling.
-- **Inline rename preview** — see the diff before confirming a rename.
+---
+
+## ✨ Features
+
+### 🔧 Core
+| Area | What's included |
+|------|----------------|
+| **Package management** | Lazy.nvim with smart lazy-loading |
+| **Language servers** | Mason-managed: `lua_ls`, `pyright`, `ts_ls`, `html`, `cssls`, `jsonls`, `yamlls`, `bashls`, `clangd`, `rust_analyzer` |
+| **Completion** | nvim-cmp + LuaSnip + friendly-snippets + buffer/path/LSP sources |
+| **Formatting** | conform.nvim (auto-format on save, 500ms debounce) |
+| **Linting** | nvim-lint (`pylint`, `eslint_d`, `markdownlint`, `luacheck`) |
+| **Syntax highlighting** | Tree-sitter (14 languages ensured, text objects, incremental selection) |
+
+### 🔍 Navigation & Search
+| Feature | Plugin | Keybind |
+|---------|--------|---------|
+| File search | Telescope + fzf-native | `<Space>ff` |
+| Text search | Telescope live_grep | `<Space>fg` |
+| Flash jump | flash.nvim | `s` / `S` |
+| File bookmarks | Harpoon | `<Space>ha` / `hh` |
+| Breadcrumbs | nvim-navic | (in statusline) |
+| Code outline | nvim-navbuddy | `<Space>nb` |
+| Buffer tabs | bufferline.nvim | `<Tab>` / `<S-Tab>` |
+
+### 💻 Code Intelligence
+| Feature | Plugin | Keybind |
+|---------|--------|---------|
+| Go to definition | LSP built-in | `gd` |
+| Hover docs | LSP built-in | `K` |
+| Rename with preview | inc-rename.nvim | `<Space>rn` |
+| Code actions | LSP built-in | `<F4>` |
+| Code lens | LSP built-in | `<Space>Lc` |
+| Call hierarchy | LSP built-in | `<Space>Li` / `Lo` |
+| Inlay hints | LSP built-in | (automatic) |
+| Diagnostics | trouble.nvim | `<Space>xx` |
+| Todo highlights | todo-comments.nvim | `]t` / `[t` |
+
+### 🧪 Testing & Debugging
+| Feature | Plugin | Keybind |
+|---------|--------|---------|
+| Debugger | nvim-dap + DAP UI | `<Space>db` / `dc` / `di` / `do` |
+| Test runner | neotest (python, vitest, gtest, plenary) | `<Space>tr` / `tf` / `ta` |
+| Task runner | overseer.nvim | `<Space>rr` / `rb` / `rt` |
+
+### 🛠️ Integrations
+| Feature | Plugin | Keybind |
+|---------|--------|---------|
+| File explorer | NvimTree | `<C-n>` |
+| Integrated terminal | toggleterm.nvim | `<Space>tt` |
+| Git gutter | gitsigns.nvim | `]c` / `[c` |
+| Git commands | vim-fugitive | `<Space>gs` / `gc` / `gp` |
+| Git graph | gitgraph.nvim | `<Space>gg` |
+| GitHub PRs/Issues | octo.nvim | `<Space>gi` / `gpr` |
+| Database | vim-dadbod + UI | `<Space>Du` |
+| REST client | rest.nvim | `<Space>Rt` |
+| Projects | project.nvim | `<Space>pp` |
+| Sessions | persistence.nvim | `<Space>Ss` / `Sl` |
+| Markdown preview | render-markdown.nvim | (automatic) |
+
+### 🤖 AI
+| Feature | Plugin | Keybind |
+|---------|--------|---------|
+| Code suggestions | GitHub Copilot | `<M-l>` accept |
+| AI chat | CopilotChat.nvim | `<Space>ac` |
+
+### 🎨 Visual
+| Feature | Plugin | Keybind |
+|---------|--------|---------|
+| Theme | Tokyo Night | (4 styles: night/storm/moon/day) |
+| Statusline | lualine.nvim | (git + diagnostics + breadcrumbs) |
+| Dashboard | dashboard-nvim | (startup screen) |
+| Zen mode | zen-mode.nvim | `<Space>zz` |
+| Color highlight | nvim-colorizer.lua | (automatic) |
+| Minimap | codewindow.nvim | `<Space>mm` |
+| Smooth scroll | cinnamon.nvim | (automatic) |
+| Indent guides | indent-blankline.nvim | (automatic) |
+| Notifications | nvim-notify + noice.nvim | (modern cmdline) |
+| Screencast | screenkey.nvim | `<Space>kx` |
+
+### ✏️ Editing
+| Feature | Plugin | Keybind |
+|---------|--------|---------|
+| Multi-cursor | vim-visual-multi | `<Space>ma` |
+| Comments | Comment.nvim | `gc` / `gb` |
+| Auto pairs | nvim-autopairs | (automatic) |
+| Surround | nvim-surround | `ys` / `cs` / `ds` |
+| Refactoring | refactoring.nvim | `<Space>ca` |
+| Undo tree | undotree | `<Space>u` |
+| Match navigation | vim-matchup | `%` enhanced |
+
 ---
 
 ## 🚀 Installation
 
-Setting up NikaVim is completely automated. Follow the steps below to transform your terminal into a blazing-fast development engine.
+### Prerequisites
 
-### 📋 Prerequisites
+| Dependency | Purpose | Install (Fedora) |
+|------------|---------|------------------|
+| **Neovim** ≥ 0.10 | Core editor | `sudo dnf install neovim` |
+| **Git** | Clone repo | `sudo dnf install git` |
+| **Ripgrep** | Telescope search | `sudo dnf install ripgrep` |
+| **Tar & Unzip** | Plugin builds | `sudo dnf install tar unzip` |
 
-Before installing, make sure your machine has the necessary core utilities installed:
-
-| Dependency | Purpose | Installation (Fedora / RHEL) |
-| :--- | :--- | :--- |
-| **Neovim** (>= 0.10) | Core Editor | `sudo dnf install neovim` |
-| **Git** | Repository Cloning | `sudo dnf install git` |
-| **Tar & Unzip** | Compiling packages | `sudo dnf install tar unzip` |
-| **Ripgrep** | Ultra-fast Telescope fuzzy searching | `sudo dnf install ripgrep` |
-
-- **Make backup of your existing files**
----
-```
-# required
-mv ~/.config/nvim{,.bak}
-
-# optional but recommended
-mv ~/.local/share/nvim{,.bak}
-mv ~/.local/state/nvim{,.bak}
-mv ~/.cache/nvim{,.bak}
-```
----
-- **Clone the stater repository**
-```
-git clone https://github.com/ae-orlando/nikavim-starter.git ~/.config/nvim
-```
----
-- **remove the .git folder**
-```
-rm -rf ~/.config/nvim/.git
-```
----
--**start neovim**
-```
-nvim
-```
---- 
-- **You end up with something like this:**
----
-![Maid Dashboard](images/maindashboard.png)
-
-
-## Quick Start
-
-Open Neovim:
+### Setup
 
 ```bash
+# 1. Back up existing config
+mv ~/.config/nvim{,.bak}
+mv ~/.local/share/nvim{,.bak}   # optional
+mv ~/.local/state/nvim{,.bak}   # optional
+mv ~/.cache/nvim{,.bak}         # optional
+
+# 2. Clone the starter
+git clone https://github.com/ae-orlando/nikavim-starter.git ~/.config/nvim
+
+# 3. Remove the starter's git history
+rm -rf ~/.config/nvim/.git
+
+# 4. Launch Neovim
 nvim
 ```
 
-Lazy.nvim installs plugins automatically on first launch. Wait for the `NikaVim ready!` message.
+Lazy.nvim installs all plugins automatically on first launch. Wait for the `✨ NikaVim ready!` message.
 
-Install common language servers:
+### Install Language Servers
 
 ```vim
 :Mason
 ```
 
 Recommended first installs:
-
-- `lua_ls` for Lua
-- `pyright` for Python
-- `ts_ls` for JavaScript and TypeScript
-- `html` for HTML
-- `cssls` for CSS
-
-You can also install a starter set from the command line:
-
 ```bash
-nvim --headless +MasonInstall\ lua_ls\ pyright\ ts_ls\ html\ cssls +qa
+nvim --headless +MasonInstall\ lua_ls\ pyright\ ts_ls\ html\ cssls\ jsonls\ yamlls +qa
 ```
 
-## Project Layout
+---
+
+## 📁 Project Layout
 
 ```text
 ~/.config/nvim/
-|-- init.lua                 # Entry point
-|-- lazy-lock.json           # Plugin lock file
-|-- lua/
-|   |-- core/
-|   |   |-- init.lua         # Core module loader
-|   |   |-- options.lua      # Editor options
-|   |   `-- keymaps.lua      # Global keymaps
-|   `-- plugins/
-|       |-- init.lua         # Plugin module loader (26 modules)
-|       |-- ui.lua           # Theme, statusline, explorer, dashboard
-|       |-- treesitter.lua   # Syntax highlighting and text objects
-|       |-- lsp.lua          # LSP, Mason, inlay hints, code lens, call hierarchy
-|       |-- completion.lua   # Completion, snippets, copilot source
-|       |-- telescope.lua    # Fuzzy finding
-|       |-- editing.lua      # Editing helpers + multi-cursor
-|       |-- formatting.lua   # Formatting and linting
-|       |-- git.lua          # Git + commit graph
-|       |-- whichkey.lua     # Keybinding discovery popup
-|       |-- trouble.lua      # Diagnostics/symbols panel
-|       |-- debug.lua        # Debugger (DAP)
-|       |-- markdown.lua     # In-buffer markdown preview
-|       |-- project.lua      # Project detection and switching
-|       |-- copilot.lua      # GitHub Copilot integration
-|       |-- test.lua         # Test runner (neotest)
-|       |-- terminal.lua     # Integrated terminal (toggleterm)
-|       |-- ai.lua           # Copilot Chat (AI assistant)
-|       |-- visuals.lua      # Zen mode, Twilight, colorizer
-|       |-- session.lua      # Session persistence
-|       |-- navic.lua        # LSP breadcrumbs + outline tree
-|       |-- tasks.lua        # Task runner (Overseer)
-|       |-- tools.lua        # REST client + database explorer
-|       |-- minimap.lua      # Code minimap
-|       |-- screencast.lua   # Keystroke display
-|       `-- octo.lua         # GitHub PR/issue manager
-|-- README.md                # Overview
-|-- QUICKSTART.md            # Short first-run guide
-|-- SETUP.md                 # Full setup checklist
-|-- KEYMAPS.md               # Keymap reference
-|-- ADVANCED.md              # Customization and troubleshooting
-|-- CHANGELOG.md             # Version history
-`-- CONTRIBUTING.md          # Contribution guide
+├── init.lua                 # Entry point (32 lines)
+├── lazy-lock.json           # Plugin commit lock file
+├── lua/
+│   ├── core/
+│   │   ├── init.lua         # Core loader
+│   │   ├── options.lua      # Editor options
+│   │   └── keymaps.lua      # Global keymaps
+│   └── plugins/             # 30 feature modules
+│       ├── init.lua         # Plugin registry
+│       ├── ui.lua           # Theme, statusline, explorer, dashboard
+│       ├── editing.lua      # Comments, pairs, surround, multi-cursor, etc.
+│       ├── lsp.lua          # LSP, Mason, inlay hints, code lens, inc-rename
+│       ├── treesitter.lua   # Syntax highlighting, text objects
+│       ├── completion.lua   # nvim-cmp, LuaSnip, snippets
+│       ├── telescope.lua    # Fuzzy finder
+│       ├── formatting.lua   # conform + nvim-lint
+│       ├── git.lua          # Gitsigns, fugitive, gitgraph
+│       ├── whichkey.lua     # Keybinding discovery
+│       ├── trouble.lua      # Diagnostics panel
+│       ├── debug.lua        # DAP debugger
+│       ├── test.lua         # Neotest runner
+│       ├── markdown.lua     # In-buffer markdown render
+│       ├── project.lua      # Project detection
+│       ├── copilot.lua      # GitHub Copilot
+│       ├── terminal.lua     # toggleterm
+│       ├── ai.lua           # CopilotChat
+│       ├── visuals.lua      # Zen mode, twilight, colorizer
+│       ├── session.lua      # persistence.nvim
+│       ├── navic.lua        # Breadcrumbs + navbuddy
+│       ├── tasks.lua        # Overseer
+│       ├── tools.lua        # Dadbod + rest.nvim
+│       ├── minimap.lua      # codewindow.nvim
+│       ├── screencast.lua   # screenkey.nvim
+│       ├── octo.lua         # GitHub PRs/issues
+│       ├── flash.lua        # Flash navigation
+│       ├── todo.lua         # TODO/FIXME highlighting
+│       ├── notify.lua       # nvim-notify + noice
+│       └── harpoon.lua      # File bookmarks
+├── README.md
+├── KEYMAPS.md
+├── QUICKSTART.md
+├── SETUP.md
+├── ADVANCED.md
+├── CHANGELOG.md
+├── INDEX.md
+├── CONTRIBUTING.md
+└── images/
 ```
 
-## Essential Keymaps
+---
 
-The leader key is `<Space>`.
+## ⌨️ Essential Keymaps
 
 | Key | Action |
-| --- | --- |
+|-----|--------|
 | `<Space>ff` | Find files |
 | `<Space>fg` | Search text |
 | `<Space>fb` | Find buffers |
 | `<Space>fr` | Recent files |
 | `<Space>pp` | Switch projects |
+| `<Space>tt` | Toggle terminal |
+| `<Space>ac` | Toggle Copilot Chat |
+| `<Space>zz` | Toggle Zen mode |
+| `<Space>xx` | Toggle diagnostics panel |
+| `<Space>db` | Toggle breakpoint |
+| `<Space>dc` | Continue debugger |
+| `<Space>tr` | Run nearest test |
+| `<Space>rr` | Run task |
+| `<Space>gg` | Git commit graph |
+| `<Space>gs` | Git status |
+| `<Space>hh` | Harpoon quick menu |
+| `<Space>ma` | Multi-cursor add word |
+| `<Space>Ss` | Save session |
+| `<Space>nb` | Code outline tree |
+| `<Space>mm` | Toggle minimap |
 | `<C-n>` | Toggle file explorer |
 | `K` | Hover documentation |
 | `gd` | Go to definition |
 | `gr` | Go to references |
-| `<F2>` | Rename symbol |
-| `<F3>` | Format buffer or selection |
-| `<F4>` | Code action |
-| `<Space>gs` | Git status |
-| `<Space>gg` | Git commit graph |
-| `<Space>db` | Toggle breakpoint |
-| `<Space>dc` | Continue debugger |
-| `<Space>xx` | Toggle diagnostics panel |
-| `<Space>tr` | Run nearest test |
-| `<Space>tt` | Toggle terminal |
-| `<Space>ac` | Toggle Copilot Chat |
-| `<Space>zz` | Toggle Zen mode |
-| `<M-l>` | Accept Copilot suggestion |
-| `<Space>ma` | Multi-cursor add word |
-| `<Space>hh` | Harpoon file bookmarks |
 | `s` | Flash jump to any character |
+| `<F2>` | Rename symbol |
+| `<F3>` | Format buffer |
+| `<F4>` | Code actions |
+| `<M-l>` | Accept Copilot suggestion |
 
-See [KEYMAPS.md](./KEYMAPS.md) for the full reference.
+> See [KEYMAPS.md](./KEYMAPS.md) for the **complete reference** (80+ keybindings).
 
-See [KEYMAPS.md](./KEYMAPS.md) for the full reference.
+---
 
-## Common Tasks
+## 🧰 Common Tasks
 
-### Add a Plugin
-
-Add the plugin spec to the most relevant file in `lua/plugins/`:
+<details>
+<summary><strong>Add a plugin</strong></summary>
 
 ```lua
+-- Add to the most relevant file in lua/plugins/:
 {
   "author/plugin.nvim",
   event = "BufReadPost",
@@ -221,76 +260,77 @@ Add the plugin spec to the most relevant file in `lua/plugins/`:
 }
 ```
 
-Then run:
+Then run `:Lazy sync`.
+</details>
 
-```vim
-:Lazy sync
-```
-
-### Add a Keymap
-
-Edit `lua/core/keymaps.lua`:
+<details>
+<summary><strong>Add a keymap</strong></summary>
 
 ```lua
+-- In lua/core/keymaps.lua:
+local map = vim.keymap.set
 map("n", "<leader>x", function()
   -- your action
 end, { desc = "Describe the action" })
 ```
+</details>
 
-### Add a Language Server
-
-Install the server in Mason:
+<details>
+<summary><strong>Add a language server</strong></summary>
 
 ```vim
-:Mason
+:Mason    " Search and install
 ```
 
-Most servers are configured automatically by `mason-lspconfig`. For custom behavior, edit `lua/plugins/lsp.lua`.
+Most servers auto-configure. For custom behaviour, edit `lua/plugins/lsp.lua`.
+</details>
 
-### Change the Theme
-
-The default theme is configured in `lua/plugins/ui.lua`.
-
-For Tokyo Night variants, change the `style` field:
+<details>
+<summary><strong>Change the theme</strong></summary>
 
 ```lua
-require("tokyonight").setup({
-  style = "night",
-})
+-- In lua/plugins/ui.lua
+require("tokyonight").setup({ style = "storm" })
+-- Options: night, storm, moon, day
 ```
+</details>
 
-Available Tokyo Night styles include `night`, `storm`, `moon`, and `day`.
+---
 
-## Troubleshooting
-
-Run health checks first:
-
-```vim
-:checkhealth
-```
-
-Common fixes:
+## 🔍 Troubleshooting
 
 | Problem | Try |
-| --- | --- |
-| Plugins are missing | `:Lazy sync` |
-| LSP is not attached | `:LspInfo` and `:Mason` |
-| Completion is quiet | Install the relevant language server in Mason |
-| Formatting is not working | Install the formatter in Mason and check `lua/plugins/formatting.lua` |
+|---------|-----|
+| Plugins missing | `:Lazy sync` |
+| LSP not attached | `:LspInfo` + `:Mason` |
+| Completion silent | Install the LSP server in Mason |
+| Formatting not working | Install formatter in Mason; check `lua/plugins/formatting.lua` |
+| Debugger not starting | Check `:DapInstall` and `lua/plugins/debug.lua` |
+| Tests not running | Ensure test adapter is configured in `lua/plugins/test.lua` |
+| Telescope slow | Run `:Telescope find_files` in a smaller directory |
+| Terminal not opening | Check `lua/plugins/terminal.lua` config |
+| Copilot Chat not responding | Ensure `copilot.vim` is authenticated (`:Copilot setup`) |
+| Dashboard splits on `:Man` | Now fixed — auto-wipes on first new buffer |
 | Startup feels slow | `:Lazy profile` or `nvim --startuptime startup.log` |
 
-See [ADVANCED.md](./ADVANCED.md) for deeper customization and troubleshooting notes.
+> See [ADVANCED.md](./ADVANCED.md) for deeper troubleshooting.
 
-## Documentation
+---
 
-- [INDEX.md](./INDEX.md): documentation map
-- [QUICKSTART.md](./QUICKSTART.md): quickest path to a working editor
-- [SETUP.md](./SETUP.md): fuller setup checklist
-- [KEYMAPS.md](./KEYMAPS.md): keyboard reference
-- [ADVANCED.md](./ADVANCED.md): customization and troubleshooting
-- [CHANGELOG.md](./CHANGELOG.md): release notes
-- [CONTRIBUTING.md](./CONTRIBUTING.md): contribution guide
+## 📚 Documentation
 
-## Notes
+| File | Purpose |
+|------|---------|
+| [INDEX.md](./INDEX.md) | Documentation map |
+| [QUICKSTART.md](./QUICKSTART.md) | Fastest path to a working editor |
+| [SETUP.md](./SETUP.md) | Complete setup checklist |
+| [KEYMAPS.md](./KEYMAPS.md) | Full keyboard reference (80+ bindings) |
+| [ADVANCED.md](./ADVANCED.md) | Customization, performance, troubleshooting |
+| [CHANGELOG.md](./CHANGELOG.md) | Version history |
+| [CONTRIBUTING.md](./CONTRIBUTING.md) | Contribution guide |
 
-NikaVim is meant to be edited. The configuration is split into small files so you can remove features, swap plugins, or add your own workflow without digging through a monolithic `init.lua`.
+---
+
+## 📝 Notes
+
+NikaVim is meant to be edited. The configuration is split into small files so you can remove features, swap plugins, or add your own workflow without digging through a monolithic `init.lua`. Every feature is a single file in `lua/plugins/` — disable what you don't need, customize what you use.

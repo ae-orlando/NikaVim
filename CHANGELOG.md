@@ -4,14 +4,14 @@ All notable changes to this Neovim configuration are documented here.
 
 ## [v3.0.0] - 2026-06-24
 
-### ✨ New Features — Full IDE Parity (VS Code-class)
+### ✨ New Features — Full IDE Parity
 
-#### 1. Multi-Cursor Editing (VS Code Ctrl+D equivalent)
+#### 1. Multi-Cursor Editing
 - **Plugin**: `mg979/vim-visual-multi`
 - Add cursors at word matches, skip regions, add cursor above/below
 - **Keymaps**: `<C-d>` add cursor at word, `<C-n>` skip add, `<C-Up/Down>` add cursor vertically
 
-#### 2. Integrated Terminal Panel (VS Code terminal equivalent)
+#### 2. Integrated Terminal Panel
 - **Plugin**: `akinsho/toggleterm.nvim`
 - Floating, horizontal, and vertical terminal layouts
 - Persists across toggles, smart shading, starts in insert mode
@@ -23,13 +23,13 @@ All notable changes to this Neovim configuration are documented here.
 - Add selection to chat context, reset sessions
 - **Keymaps**: `<leader>ac` toggle chat, `aq` quick chat, `aa` add selection, `ar` reset
 
-#### 4. Zen / Focus Mode (VS Code Zen Mode equivalent)
+#### 4. Zen / Focus Mode
 - **Plugins**: `folke/zen-mode.nvim`, `folke/twilight.nvim`
 - Distraction-free writing with centered layout
 - Dim inactive code areas with tree-sitter awareness
 - **Keymaps**: `<leader>zz` toggle zen, `<leader>zt` toggle twilight
 
-#### 5. Color Highlighting (VS Code Color Picker equivalent)
+#### 5. Color Highlighting
 - **Plugin**: `norcalli/nvim-colorizer.lua`
 - Inline color hex/rgb/hsl decoration in all files
 - Foreground mode for HTML, background mode for CSS
@@ -39,37 +39,37 @@ All notable changes to this Neovim configuration are documented here.
 - **Plugin**: nvim-colorizer (see above)
 - Highlights color codes with their actual color inline
 
-#### 7. Session Persistence (VS Code Window Restore equivalent)
+#### 7. Session Persistence
 - **Plugin**: `folke/persistence.nvim`
 - Auto-save/restore sessions per project
 - Save on VimLeave, manual save/load/stop controls
 - **Keymaps**: `<leader>Ss` save, `Sl` load last, `Sd` stop
 
-#### 8. Breadcrumb & Outline Navigation (VS Code breadcrumb + Outline equivalent)
+#### 8. Breadcrumb & Outline Navigation
 - **Plugins**: `nvim-navic`, `nvim-navbuddy`
 - LSP-based breadcrumbs in lualine statusline
 - Interactive tree-based code outline (navbuddy)
 - **Keymaps**: `<leader>nb` toggle outline, breadcrumbs show automatically
 
-#### 9. Task Runner (VS Code Tasks equivalent)
+#### 9. Task Runner
 - **Plugin**: `stevearc/overseer.nvim`
 - Run build/test tasks, integrated with toggleterm
 - Task list panel, quick actions, output viewer
 - **Keymaps**: `<leader>rr` run, `rb` build, `rt` toggle panel, `rq` quick action, `ro` output
 
-#### 10. REST Client (VS Code REST Client extension equivalent)
+#### 10. REST Client
 - **Plugin**: `rest-nvim/rest.nvim`
 - Run HTTP requests from `.http` files, preview cURL commands
 - Re-run last request, result in split
 - **Keymaps**: `<leader>Rt` run, `Rl` re-run last, `Rp` preview
 
-#### 11. Database Explorer (VS Code SQLTools equivalent)
+#### 11. Database Explorer
 - **Plugins**: `vim-dadbod`, `vim-dadbod-ui`, `vim-dadbod-completion`
 - Browse databases, run queries, UI panel
 - Auto-completion for SQL in DB buffers
 - **Keymaps**: `<leader>Du` toggle DB UI, `Dc` DB prompt, `Dq` list tables, `Df` find buffer
 
-#### 12. Code Minimap (VS Code minimap equivalent)
+#### 12. Code Minimap
 - **Plugin**: `gorbit99/codewindow.nvim`
 - Right-side minimap with toggle, maximize, configurable width
 - **Keymaps**: `<leader>mm` toggle, `mM` maximize
@@ -85,7 +85,7 @@ All notable changes to this Neovim configuration are documented here.
 - Telescope integration for pickers
 - **Keymaps**: `<leader>gi` issues, `gpr` PR list, `gprv` view PR, `gpc` checkout, `gpm` merge
 
-#### 15. Git Commit Graph (VS Code Git Graph equivalent)
+#### 15. Git Commit Graph
 - **Plugin**: `isakbm/gitgraph.nvim`
 - Visual commit graph with author, timestamp, hash
 - **Keymaps**: `<leader>gg` toggle git graph
@@ -181,7 +181,7 @@ lua/plugins/
 
 #### 5. Inline Rename Preview
 - **Plugin**: `smjonas/inc-rename.nvim`
-- See the rename diff before confirming (VS Code style)
+- See the rename diff before confirming
 - **Keymaps**: `<leader>rn` triggered rename with preview
 
 #### 6. Smooth Scrolling
@@ -209,7 +209,7 @@ lua/plugins/
 
 ### ✨ New Features
 
-#### 1. Debugging (VSCode-level debugger)
+#### 1. Debugging
 - **Plugins**: `nvim-dap`, `nvim-dap-ui`, `nvim-dap-virtual-text`, `mason-nvim-dap.nvim`
 - Full debugger with breakpoints, conditional breakpoints, step in/over/out, continue, restart, terminate
 - DAP UI sidebar for variables, watches, stacks, and breakpoints
@@ -218,11 +218,11 @@ lua/plugins/
 
 #### 2. Which-Key (Keybinding discovery)
 - **Plugin**: `which-key.nvim`
-- Popup keybinding cheatsheet on `<Space>` press (VSCode's "Ctrl+K Ctrl+S" equivalent)
+- Popup keybinding cheatsheet on `<Space>` press
 - Group labels for Debug, Format/Find, Git, Search, Test/Terminal
 - Modern popup preset with clean styling
 
-#### 3. Diagnostics Panel (VSCode Problems equivalent)
+#### 3. Diagnostics Panel (Problems panel equivalent)
 - **Plugin**: `trouble.nvim`
 - View all diagnostics, symbols, loclist, quickfix in a toggleable panel
 - **Keymaps**: `<leader>xx` diagnostics all, `xX` buffer diagnostics, `xs` symbols, `xl` loclist, `xq` quickfix
@@ -232,7 +232,7 @@ lua/plugins/
 - In-buffer rendered markdown (headings, bold, italic, code, links, images)
 - Auto-activates on markdown files
 
-#### 5. Project Management (VSCode workspace equivalent)
+#### 5. Project Management
 - **Plugin**: `project.nvim`
 - Automatic project detection (git, package.json, Cargo.toml, Makefile, etc.)
 - Telescope project picker: `<leader>fp` to switch projects
@@ -243,12 +243,12 @@ lua/plugins/
 - AI code suggestions in insert mode
 - **Keymaps**: `<M-l>` accept, `<M-]>` next suggestion, `<M-[>` previous suggestion
 
-#### 7. Test Runner (VSCode test explorer equivalent)
+#### 7. Test Runner
 - **Plugin**: `neotest` with adapters (python, plenary, vitest, gtest)
 - Run nearest test, test file, or all tests with summary and output views
 - **Keymaps**: `<leader>tr` nearest, `tf` file, `ta` all, `ts` summary, `to` output
 
-#### 8. Inlay Hints (VSCode type hints)
+#### 8. Inlay Hints
 - Enabled inline type hints via LspAttach (`vim.lsp.inlay_hint.enable(true)`)
 - Shows inferred types, parameter names, and return types inline
 

@@ -1,109 +1,170 @@
-# NikaVim Documentation Index
+# 📚 NikaVim Documentation Index
 
 Use this file as the map for the rest of the documentation.
 
-## Start Here
+---
+
+## 🚀 Start Here
 
 | Goal | Read |
-| --- | --- |
-| Get running quickly | [QUICKSTART.md](./QUICKSTART.md) |
+|------|------|
+| Get running in 5 minutes | [QUICKSTART.md](./QUICKSTART.md) |
 | Complete first-time setup | [SETUP.md](./SETUP.md) |
-| Learn the keymaps | [KEYMAPS.md](./KEYMAPS.md) |
-| Understand the full configuration | [README.md](./README.md) |
+| Learn all the keybindings | [KEYMAPS.md](./KEYMAPS.md) |
+| Understand the full feature set | [README.md](./README.md) |
 | Customize or troubleshoot | [ADVANCED.md](./ADVANCED.md) |
-| Review changes over time | [CHANGELOG.md](./CHANGELOG.md) |
+| Review version history | [CHANGELOG.md](./CHANGELOG.md) |
 | Contribute changes | [CONTRIBUTING.md](./CONTRIBUTING.md) |
 
-## First Run
+---
 
-1. Open Neovim:
+## ⚡ First Run
 
-   ```bash
-   nvim
-   ```
+```bash
+nvim
+```
 
-2. Wait for the `NikaVim ready!` message.
+1. Wait for `✨ NikaVim ready!`
+2. Install language servers: `:Mason`
+3. Try the basics:
 
-3. Install language servers:
+| Key | Action |
+|-----|--------|
+| `<Space>ff` | Find files |
+| `<Space>fg` | Search text |
+| `<C-n>` | Toggle file explorer |
+| `<Space>tt` | Open terminal |
+| `K` | Hover documentation |
+| `gd` | Go to definition |
 
-   ```vim
-   :Mason
-   ```
+---
 
-4. Try the core navigation keys:
-
-   | Key | Action |
-   | --- | --- |
-   | `<Space>ff` | Find files |
-   | `<Space>fg` | Search text |
-   | `<Space>fb` | Find buffers |
-   | `<C-n>` | Toggle file explorer |
-   | `K` | Hover documentation |
-   | `gd` | Go to definition |
-
-## Configuration Map
+## 🗂️ Configuration Map
 
 ```text
 ~/.config/nvim/
-|-- init.lua
-|-- lua/
-|   |-- core/
-|   |   |-- options.lua
-|   |   `-- keymaps.lua
-|   `-- plugins/
-|       |-- ui.lua
-|       |-- treesitter.lua
-|       |-- lsp.lua
-|       |-- completion.lua
-|       |-- telescope.lua
-|       |-- editing.lua
-|       |-- formatting.lua
-|       |-- git.lua
-|       |-- whichkey.lua     ← NEW
-|       |-- trouble.lua      ← NEW
-|       |-- debug.lua        ← NEW
-|       |-- markdown.lua     ← NEW
-|       |-- project.lua      ← NEW
-|       |-- copilot.lua      ← NEW
-|       `-- test.lua         ← NEW
-`-- docs and project files
+├── init.lua                 # Entry point
+├── lazy-lock.json           # Plugin lock file
+├── lua/
+│   ├── core/
+│   │   ├── init.lua         # Core loader
+│   │   ├── options.lua      # Editor options
+│   │   └── keymaps.lua      # Global keymaps
+│   └── plugins/             # 30 feature modules
+│       ├── init.lua         # Plugin registry
+│       ├── ui.lua           # Theme, statusline, explorer, dashboard
+│       ├── treesitter.lua   # Syntax highlighting, text objects
+│       ├── lsp.lua          # LSP, Mason, inlay hints, code lens, rename preview
+│       ├── completion.lua   # Completion, snippets
+│       ├── telescope.lua    # Fuzzy finding
+│       ├── editing.lua      # Comments, pairs, surround, multi-cursor, etc.
+│       ├── formatting.lua   # Formatting + linting
+│       ├── git.lua          # Gitsigns, fugitive, git graph
+│       ├── whichkey.lua     # Keybinding discovery
+│       ├── trouble.lua      # Diagnostics panel
+│       ├── debug.lua        # Debugger (DAP)
+│       ├── test.lua         # Test runner (neotest)
+│       ├── markdown.lua     # Markdown preview
+│       ├── project.lua      # Project detection
+│       ├── copilot.lua      # GitHub Copilot
+│       ├── terminal.lua     # Integrated terminal
+│       ├── ai.lua           # Copilot Chat
+│       ├── visuals.lua      # Zen mode, twilight, colorizer
+│       ├── session.lua      # Session persistence
+│       ├── navic.lua        # Breadcrumbs + navbuddy
+│       ├── tasks.lua        # Task runner
+│       ├── tools.lua        # Database + REST client
+│       ├── minimap.lua      # Code minimap
+│       ├── screencast.lua   # Keystroke display
+│       ├── octo.lua         # GitHub PRs / issues
+│       ├── flash.lua        # Flash navigation
+│       ├── todo.lua         # TODO/FIXME highlighting
+│       ├── notify.lua       # Notifications + cmdline UI
+│       └── harpoon.lua      # File bookmarks
+├── README.md
+├── KEYMAPS.md
+├── QUICKSTART.md
+├── SETUP.md
+├── ADVANCED.md
+├── CHANGELOG.md
+├── INDEX.md
+├── CONTRIBUTING.md
+└── images/
 ```
 
-## Feature Areas
+---
 
-| Area | Main Files |
-| --- | --- |
+## 🎯 Feature Areas
+
+| Area | Key Files |
+|------|-----------|
 | Editor options | `lua/core/options.lua` |
 | Global keymaps | `lua/core/keymaps.lua` |
-| Theme and dashboard | `lua/plugins/ui.lua` |
-| LSP and Mason | `lua/plugins/lsp.lua` |
-| Completion and snippets | `lua/plugins/completion.lua` |
+| Theme & dashboard | `lua/plugins/ui.lua` |
+| LSP & Mason | `lua/plugins/lsp.lua` |
+| Completion & snippets | `lua/plugins/completion.lua` |
 | Search | `lua/plugins/telescope.lua` |
-| Formatting and linting | `lua/plugins/formatting.lua` |
+| Formatting & linting | `lua/plugins/formatting.lua` |
 | Git | `lua/plugins/git.lua` |
 | Editing helpers | `lua/plugins/editing.lua` |
 | Syntax highlighting | `lua/plugins/treesitter.lua` |
 | Keybinding discovery | `lua/plugins/whichkey.lua` |
-| Diagnostics and symbols | `lua/plugins/trouble.lua` |
+| Diagnostics & symbols | `lua/plugins/trouble.lua` |
 | Debugger | `lua/plugins/debug.lua` |
-| Markdown preview | `lua/plugins/markdown.lua` |
-| Project management | `lua/plugins/project.lua` |
-| Copilot AI | `lua/plugins/copilot.lua` |
 | Test runner | `lua/plugins/test.lua` |
+| Markdown | `lua/plugins/markdown.lua` |
+| Project management | `lua/plugins/project.lua` |
+| Copilot | `lua/plugins/copilot.lua` |
+| Terminal | `lua/plugins/terminal.lua` |
+| AI Chat | `lua/plugins/ai.lua` |
+| Visual enhancements | `lua/plugins/visuals.lua` |
+| Sessions | `lua/plugins/session.lua` |
+| Breadcrumbs & outline | `lua/plugins/navic.lua` |
+| Task runner | `lua/plugins/tasks.lua` |
+| Database & REST | `lua/plugins/tools.lua` |
+| Minimap | `lua/plugins/minimap.lua` |
+| Screencast | `lua/plugins/screencast.lua` |
+| GitHub PRs | `lua/plugins/octo.lua` |
+| Flash navigation | `lua/plugins/flash.lua` |
+| Todo highlights | `lua/plugins/todo.lua` |
+| Notifications | `lua/plugins/notify.lua` |
+| File bookmarks | `lua/plugins/harpoon.lua` |
 
-## Common Commands
+---
+
+## 🧰 Common Commands
 
 ```vim
-:Lazy          " Manage plugins
-:Mason         " Install language servers, formatters, and linters
-:checkhealth   " Diagnose setup issues
-:LspInfo       " Inspect active language servers
-:Lazy profile  " Inspect plugin startup cost
+" Plugin management
+:Lazy         " Manage plugins
+:Lazy sync    " Install / update plugins
+:Lazy profile " Profile startup time
+
+" Tools
+:Mason        " Install language servers, formatters, linters
+
+" Diagnostics
+:checkhealth  " Check setup status
+:LspInfo      " Inspect active language servers
+
+" Debugging
+:DBUIToggle   " Open database UI
+:OverseerToggle " Show task panel
+:TodoTrouble  " Browse TODO/FIXME markers
+
+" Navigation
+:Telescope find_files
+:Telescope live_grep
+:Telescope buffers
+:Navbuddy     " Code outline tree
 ```
 
-## Customization Path
+---
 
-1. Start with [README.md](./README.md) for the project shape.
-2. Change keymaps in `lua/core/keymaps.lua`.
-3. Change plugin behavior in the relevant `lua/plugins/*.lua` file.
-4. Use [ADVANCED.md](./ADVANCED.md) when you need examples or troubleshooting notes.
+## 🛤️ Customization Path
+
+1. Start with [README.md](./README.md) for the project shape
+2. Change keymaps in `lua/core/keymaps.lua`
+3. Change plugin behaviour in the relevant `lua/plugins/*.lua` file
+4. Use [ADVANCED.md](./ADVANCED.md) for examples and troubleshooting
+5. Disable a feature by setting `enabled = false` in its plugin spec

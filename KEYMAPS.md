@@ -229,7 +229,7 @@
 ## Editor Navigation
 | Keybind | Action |
 |---------|--------|
-| `<C-CR>` | Insert blank line below (VS Code style) |
+| `<C-CR>` | Insert blank line below |
 | `<C-n>` | Toggle file explorer |
 
 ## Git Operations (Gitsigns & Fugitive)
