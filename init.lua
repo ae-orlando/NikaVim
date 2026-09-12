@@ -5,8 +5,10 @@ local config_dir = vim.fn.fnamemodify(debug.getinfo(1, "S").source:sub(2), ":p:h
 vim.opt.rtp:prepend(config_dir)
 package.path = config_dir .. "/lua/?.lua;" .. config_dir .. "/lua/?/init.lua;" .. package.path
 
--- Load core configuration (options and keymaps)
-require("core")
+-- Load core configuration (options, autocmds, commands - NOT keymaps yet)
+require("core.options")
+require("core.autocmds")
+require("core.commands")
 
 -- Bootstrap lazy.nvim package manager
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
@@ -35,6 +37,14 @@ require("lazy").setup("plugins", {
     enabled = true,
     notify = true,
   },
+})
+
+-- Load keymaps after plugins are ready (so LazyVim/Snacks are available)
+vim.api.nvim_create_autocmd("User", {
+  pattern = "VeryLazy",
+  callback = function()
+    require("core.keymaps")
+  end,
 })
 
 -- Print startup info

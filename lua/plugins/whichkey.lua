@@ -4,30 +4,65 @@ return {
     event = "VeryLazy",
     config = function()
       require("which-key").setup({
-        preset = "modern",
+        preset = "helix",
         icons = {
           group = "",
         },
         spec = {
-          { "<leader>a", group = "AI" },
-          { "<leader>d", group = "Debug" },
-          { "<leader>f", group = "Format / Find" },
-          { "<leader>g", group = "Git" },
-          { "<leader>h", group = "Harpoon" },
-          { "<leader>k", group = "Keys (screencast)" },
-          { "<leader>m", group = "Mason" },
-          { "<leader>n", group = "Nav" },
-          { "<leader>o", group = "Octo (GitHub)" },
-          { "<leader>r", group = "Tasks" },
-          { "<leader>s", group = "Search" },
-          { "<leader>t", group = "Test / Terminal" },
-          { "<leader>z", group = "Zen / Focus" },
-          { "<leader>D", group = "Database" },
-          { "<leader>L", group = "LSP Extras" },
-          { "<leader>R", group = "REST" },
-          { "<leader>S", group = "Session" },
+          {
+            mode = { "n", "x" },
+            { "<leader><tab>", group = "tabs" },
+            { "<leader>c", group = "code" },
+            { "<leader>d", group = "debug" },
+            { "<leader>dp", group = "profiler" },
+            { "<leader>f", group = "file/find" },
+            { "<leader>g", group = "git" },
+            { "<leader>gh", group = "hunks" },
+            { "<leader>q", group = "quit/session" },
+            { "<leader>s", group = "search" },
+            { "<leader>u", group = "ui" },
+            { "<leader>x", group = "diagnostics/quickfix" },
+            { "[", group = "prev" },
+            { "]", group = "next" },
+            { "g", group = "goto" },
+            { "gs", group = "surround" },
+            { "z", group = "fold" },
+            {
+              "<leader>b",
+              group = "buffer",
+              expand = function()
+                return require("which-key.extras").expand.buf()
+              end,
+            },
+            {
+              "<leader>w",
+              group = "windows",
+              proxy = "<c-w>",
+              expand = function()
+                return require("which-key.extras").expand.win()
+              end,
+            },
+            -- better descriptions
+            { "gx", desc = "Open with system app" },
+          },
         },
       })
     end,
+    keys = {
+      {
+        "<leader>?",
+        function()
+          require("which-key").show({ global = false })
+        end,
+        desc = "Buffer Keymaps (which-key)",
+      },
+      {
+        "<c-w><space>",
+        function()
+          require("which-key").show({ keys = "<c-w>", loop = true })
+        end,
+        desc = "Window Hydra Mode (which-key)",
+      },
+    },
   },
 }

@@ -2,6 +2,7 @@
 -- All plugin specifications
 
 return {
+  require("plugins.lazyvim"),
   require("plugins.ui"),
   require("plugins.treesitter"),
   require("plugins.lsp"),

@@ -34,6 +34,10 @@ return {
       vim.keymap.set({ "n", "v" }, "<leader>fp", function()
         require("conform").format({ async = true, lsp_format = "fallback" })
       end, { desc = "Format code" })
+
+      vim.keymap.set({ "n", "x" }, "<leader>cF", function()
+        require("conform").format({ formatters = { "injected" }, timeout_ms = 3000 })
+      end, { desc = "Format Injected Langs" })
     end,
   },
 

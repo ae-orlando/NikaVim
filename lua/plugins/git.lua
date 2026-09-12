@@ -11,49 +11,71 @@ return {
         signs = {
           add = { text = "▎" },
           change = { text = "▎" },
-          delete = { text = "" },
-          topdelete = { text = "" },
+          delete = { text = "" },
+          topdelete = { text = "" },
           changedelete = { text = "▎" },
           untracked = { text = "▎" },
         },
-        on_attach = function(bufnr)
-          local gitsigns = require("gitsigns")
-          local map = vim.keymap.set
-          local opts = { buffer = bufnr }
+        signs_staged = {
+          add = { text = "▎" },
+          change = { text = "▎" },
+          delete = { text = "" },
+          topdelete = { text = "" },
+          changedelete = { text = "▎" },
+        },
+        on_attach = function(buffer)
+          local gs = package.loaded.gitsigns
 
-          map("n", "]c", function()
+          local function map(mode, l, r, desc)
+            vim.keymap.set(mode, l, r, { buffer = buffer, desc = desc, silent = true })
+          end
+
+          -- stylua: ignore start
+          map("n", "]h", function()
             if vim.wo.diff then
               vim.cmd.normal({ "]c", bang = true })
             else
-              gitsigns.nav_hunk("next")
+              gs.nav_hunk("next")
             end
-          end, opts)
-          map("n", "[c", function()
+          end, "Next Hunk")
+          map("n", "[h", function()
             if vim.wo.diff then
               vim.cmd.normal({ "[c", bang = true })
             else
-              gitsigns.nav_hunk("prev")
+              gs.nav_hunk("prev")
             end
-          end, opts)
-
-          map("n", "<leader>hs", gitsigns.stage_hunk, opts)
-          map("n", "<leader>hu", gitsigns.undo_stage_hunk, opts)
-          map("n", "<leader>hr", gitsigns.reset_hunk, opts)
-          map("v", "<leader>hs", function()
-            gitsigns.stage_hunk({ vim.fn.line("."), vim.fn.line("v") })
-          end, opts)
-          map("v", "<leader>hr", function()
-            gitsigns.reset_hunk({ vim.fn.line("."), vim.fn.line("v") })
-          end, opts)
-
-          map("n", "<leader>hp", gitsigns.preview_hunk, opts)
-          map("n", "<leader>hb", function()
-            gitsigns.blame_line({ full = true })
-          end, opts)
-          map("n", "<leader>tb", gitsigns.toggle_current_line_blame, opts)
-          map("n", "<leader>hd", gitsigns.diffthis, opts)
+          end, "Prev Hunk")
+          map("n", "]H", function() gs.nav_hunk("last") end, "Last Hunk")
+          map("n", "[H", function() gs.nav_hunk("first") end, "First Hunk")
+          map({ "n", "x" }, "<leader>ghs", ":Gitsigns stage_hunk<CR>", "Stage Hunk")
+          map({ "n", "x" }, "<leader>ghr", ":Gitsigns reset_hunk<CR>", "Reset Hunk")
+          map("n", "<leader>ghS", gs.stage_buffer, "Stage Buffer")
+          map("n", "<leader>ghu", gs.undo_stage_hunk, "Undo Stage Hunk")
+          map("n", "<leader>ghR", gs.reset_buffer, "Reset Buffer")
+          map("n", "<leader>ghp", gs.preview_hunk_inline, "Preview Hunk Inline")
+          map("n", "<leader>ghb", function() gs.blame_line({ full = true }) end, "Blame Line")
+          map("n", "<leader>ghB", function() gs.blame() end, "Blame Buffer")
+          map("n", "<leader>ghd", gs.diffthis, "Diff This")
+          map("n", "<leader>ghD", function() gs.diffthis("~") end, "Diff This ~")
+          map({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>", "GitSigns Select Hunk")
         end,
       })
+    end,
+  },
+
+  -- Toggle git signs
+  {
+    "gitsigns.nvim",
+    opts = function()
+      Snacks.toggle({
+        name = "Git Signs",
+        get = function()
+          return require("gitsigns.config").config.signcolumn
+        end,
+        set = function(state)
+          require("gitsigns").toggle_signs(state)
+        end,
+      }):map("<leader>uG")
     end,
   },
 
@@ -75,7 +97,7 @@ return {
     "isakbm/gitgraph.nvim",
     cmd = { "GitGraph" },
     keys = {
-      { "<leader>gg", "<cmd>GitGraph<CR>", desc = "Toggle git graph" },
+      { "<leader>gG", "<cmd>GitGraph<CR>", desc = "Toggle git graph" },
     },
     config = function()
       require("gitgraph").setup({
