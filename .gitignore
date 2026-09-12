@@ -1,0 +1,16 @@
+*.swp
+*.swo
+*~
+*.log
+*.lock
+lazy-lock.json
+tests/
+doc/
+scripts/
+queries/
+.github/
+.vscode/
+.idea/
+*.tmTheme
+*.sublime-settings
+*.yml.mako
