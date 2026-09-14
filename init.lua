@@ -13,41 +13,44 @@ require("core.commands")
 -- Bootstrap lazy.nvim package manager
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
-  local output = vim.fn.system({
-    "git",
-    "clone",
-    "--filter=blob:none",
-    "https://github.com/folke/lazy.nvim.git",
-    "--branch=stable",
-    lazypath,
-  })
-  if vim.v.shell_error ~= 0 then
-    error("Failed to bootstrap lazy.nvim: " .. vim.trim(output))
-  end
+	local output = vim.fn.system({
+		"git",
+		"clone",
+		"--filter=blob:none",
+		"https://github.com/folke/lazy.nvim.git",
+		"--branch=stable",
+		lazypath,
+	})
+	if vim.v.shell_error ~= 0 then
+		error("Failed to bootstrap lazy.nvim: " .. vim.trim(output))
+	end
 end
 vim.opt.rtp:prepend(lazypath)
 
+-- ===========Fix for Plugin order ========
+vim.g.lazyvim_check_order = false
+
 -- Load all plugins from plugins/init.lua
 require("lazy").setup("plugins", {
-  lockfile = config_dir .. "/lazy-lock.json",
-  rocks = {
-    enabled = false,
-  },
-  change_detection = {
-    enabled = true,
-    notify = true,
-  },
+	lockfile = config_dir .. "/lazy-lock.json",
+	rocks = {
+		enabled = false,
+	},
+	change_detection = {
+		enabled = true,
+		notify = true,
+	},
 })
 
 -- Load keymaps after plugins are ready (so LazyVim/Snacks are available)
 vim.api.nvim_create_autocmd("User", {
-  pattern = "VeryLazy",
-  callback = function()
-    require("core.keymaps")
-  end,
+	pattern = "VeryLazy",
+	callback = function()
+		require("core.keymaps")
+	end,
 })
 
 -- Print startup info
 vim.schedule(function()
-  print("✨ NikaVim ready!")
+	print("✨ NikaVim ready!")
 end)

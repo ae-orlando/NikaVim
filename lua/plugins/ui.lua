@@ -24,11 +24,11 @@ return {
 	-- Modern statusline
 	{
 		"nvim-lualine/lualine.nvim",
-		dependencies = { "nvim-tree/nvim-web-devicons" },
+		dependencies = { "catppuccin/nvim", "nvim-tree/nvim-web-devicons" },
 		config = function()
 			require("lualine").setup({
 				options = {
-					theme = "catppuccin",
+					theme = "auto",
 					component_separators = { left = "", right = "" },
 					section_separators = { left = "", right = "" },
 					globalstatus = true,
@@ -366,7 +366,7 @@ return {
 							key = "f",
 							key_hl = "Number",
 							key_format = " %s",
-							keymap = "SPC f f",
+							keymap = "",
 							action = "Telescope find_files",
 						},
 						{
@@ -377,7 +377,7 @@ return {
 							key = "r",
 							key_hl = "Number",
 							key_format = " %s",
-							keymap = "SPC f r",
+							keymap = "",
 							action = "Telescope oldfiles",
 						},
 						{
@@ -388,7 +388,7 @@ return {
 							key = "g",
 							key_hl = "Number",
 							key_format = " %s",
-							keymap = "SPC f g",
+							keymap = "",
 							action = "Telescope live_grep",
 						},
 						{
@@ -399,7 +399,7 @@ return {
 							key = "e",
 							key_hl = "Number",
 							key_format = " %s",
-							keymap = "SPC e",
+							keymap = "",
 							action = "NvimTreeToggle",
 						},
 						{
@@ -410,7 +410,7 @@ return {
 							key = "l",
 							key_hl = "Number",
 							key_format = " %s",
-							keymap = "SPC l",
+							keymap = "",
 							action = "Lazy",
 						},
 						{
@@ -421,7 +421,7 @@ return {
 							key = "m",
 							key_hl = "Number",
 							key_format = " %s",
-							keymap = "SPC c m",
+							keymap = "",
 							action = "Mason",
 						},
 						{
@@ -432,7 +432,7 @@ return {
 							key = "q",
 							key_hl = "Number",
 							key_format = " %s",
-							keymap = "SPC q q",
+							keymap = "",
 							action = "qa",
 						},
 					},

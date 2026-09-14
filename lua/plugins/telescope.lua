@@ -2,50 +2,94 @@
 -- Fuzzy finder and navigation
 
 return {
-  {
-    "nvim-telescope/telescope.nvim",
-    branch = "0.1.x",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
-    },
-    config = function()
-      local telescope = require("telescope")
-      local actions = require("telescope.actions")
+	{
+		"nvim-telescope/telescope.nvim",
+		branch = "0.1.x",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+		},
+		keys = { -- ADD HERE (after dependencies, before config)
+			{
+				"<leader>ff",
+				function()
+					require("telescope.builtin").find_files()
+				end,
+				desc = "Find Files (Root Dir)",
+			},
+			{
+				"<leader>fF",
+				function()
+					require("telescope.builtin").find_files({ cwd = false })
+				end,
+				desc = "Find Files (cwd)",
+			},
+			{
+				"<leader>fr",
+				function()
+					require("telescope.builtin").oldfiles()
+				end,
+				desc = "Recent Files",
+			},
+			{
+				"<leader>fb",
+				function()
+					require("telescope.builtin").buffers()
+				end,
+				desc = "Buffers",
+			},
+			{
+				"<leader>fg",
+				function()
+					require("telescope.builtin").live_grep()
+				end,
+				desc = "Grep (Root Dir)",
+			},
+			{
+				"<leader>fh",
+				function()
+					require("telescope.builtin").help_tags()
+				end,
+				desc = "Help Tags",
+			},
+		},
 
-      telescope.setup({
-        defaults = {
-          prompt_prefix = " ",
-          selection_caret = " ",
-          path_display = { "truncate" },
-          file_ignore_patterns = {
-            "node_modules",
-            ".git/",
-            "__pycache__",
-            ".venv",
-          },
-        
-          preview = {
-          treesitter = false,
-        },
-          mappings = {
-            i = {
-              ["<C-k>"] = actions.move_selection_previous,
-              ["<C-j>"] = actions.move_selection_next,
-              ["<C-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
-            },
-          },
-        },
-        extensions = {
-          fzf = {
-            fuzzy = true,
-            override_generic_sorter = true,
-            override_file_sorter = true,
-            case_mode = "smart_case",
-          },
-        },
-      })
+		config = function()
+			local telescope = require("telescope")
+			local actions = require("telescope.actions")
 
-    end,
-  },
+			telescope.setup({
+				defaults = {
+					prompt_prefix = " ",
+					selection_caret = " ",
+					path_display = { "truncate" },
+					file_ignore_patterns = {
+						"node_modules",
+						".git/",
+						"__pycache__",
+						".venv",
+					},
+
+					preview = {
+						treesitter = false,
+					},
+					mappings = {
+						i = {
+							["<C-k>"] = actions.move_selection_previous,
+							["<C-j>"] = actions.move_selection_next,
+							["<C-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
+						},
+					},
+				},
+				extensions = {
+					fzf = {
+						fuzzy = true,
+						override_generic_sorter = true,
+						override_file_sorter = true,
+						case_mode = "smart_case",
+					},
+				},
+			})
+		end,
+	},
 }
