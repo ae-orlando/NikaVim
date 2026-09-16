@@ -1,4 +1,3 @@
--- ~/.config/nvim/lua/core/autocmds.lua
 -- Centralized autocommands
 
 local api = vim.api
@@ -52,6 +51,15 @@ autocmd("FileType", {
 	end,
 })
 
+autocmd("FileType", {
+	group = ft_group,
+	pattern = { "markdown", "text", "gitcommit" },
+	callback = function()
+		vim.opt_local.spell = true
+		vim.opt_local.spelllang = { "en_us" }
+	end,
+})
+
 -- ============================================
 -- Highlight on Yank
 -- ============================================
@@ -62,7 +70,6 @@ autocmd("TextYankPost", {
 		vim.highlight.on_yank({ higroup = "Visual", timeout = 200 })
 	end,
 })
-
 
 -- ============================================
 -- Resize Splits on VimResized
@@ -75,10 +82,33 @@ autocmd("VimResized", {
 	end,
 })
 
-vim.api.nvim_create_autocmd("FileType", {
-	pattern = { "markdown", "text", "gitcommit" },
+-- ============================================
+-- Bold Styling for Comments & Keywords (Preserving Dynamic Colors)
+-- ============================================
+local bold_group = augroup("NikaVimBoldHighlights", { clear = true })
+autocmd("ColorScheme", {
+	group = bold_group,
+	pattern = "*",
 	callback = function()
-		vim.opt_local.spell = true
-		vim.opt_local.spelllang = { "en_us" }
+		local accent_hl = api.nvim_get_hl(0, { name = "Function", link = false })
+		api.nvim_set_hl(0, "CursorLineNr", { fg = accent_hl.fg, bold = true })
+
+		local highlight_groups = {
+			"Comment",
+			"Keyword",
+			"Statement",
+			"Conditional",
+			"Repeat",
+			"@comment",
+			"@keyword",
+			"@keyword.function",
+			"@keyword.return",
+		}
+
+		for _, group in ipairs(highlight_groups) do
+			local hl = api.nvim_get_hl(0, { name = group, link = false })
+			hl.bold = true
+			api.nvim_set_hl(0, group, hl)
+		end
 	end,
 })
