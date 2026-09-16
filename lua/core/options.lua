@@ -14,11 +14,17 @@ vim.opt.wrap = false
 opt.termguicolors = true -- True color support
 opt.number = true -- Line numbers
 opt.relativenumber = true -- Relative line numbers
-opt.cursorline = true -- Highlight current line
+opt.cursorline = false -- Highlight current line
 opt.signcolumn = "yes" -- Always show sign column
 opt.scrolloff = 8 -- Keep cursor centered
 opt.list = true -- Show invisible characters
 opt.listchars = { tab = "➤ ", trail = "·" }
+
+-- ============================================
+-- Cursor Settings
+-- ============================================
+opt.guicursor =
+	"n-v-c-sm:block-blinkon500-blinkoff500-blinkwait200,i-ci-ve:ver25-blinkon500-blinkoff500-blinkwait200,r-cr:hor20,o:hor20"
 
 -- ============================================
 -- Tab Settings

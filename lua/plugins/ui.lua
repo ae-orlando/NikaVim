@@ -1,26 +1,6 @@
--- ~/.config/nvim/lua/plugins/ui.lua
 -- UI and visual enhancements
 
 return {
-	--Beautiful colorscheme (catppuccin)
-	{
-		"catppuccin/nvim",
-		name = "catppuccin",
-		lazy = false,
-		priority = 1000,
-		config = function()
-			require("catppuccin").setup({
-				flavour = "mocha",
-				transparent_background = false,
-				styles = {
-					comments = { "italic" },
-					keywords = { "bold" },
-				},
-			})
-			vim.cmd.colorscheme("catppuccin")
-		end,
-	},
-
 	-- Modern statusline
 	{
 		"nvim-lualine/lualine.nvim",
